@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: QWaveRectangle
+  m_Shader: {fileID: -6465566751694194690, guid: 7911fe0fcadf4634a969f6ab594aaf8a,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_548E6BF1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_107A7A52: 0.1
+    - Vector1_23903953: 0.07
+    - Vector1_6E9000E5: 0.2
+    - Vector1_7CE531: 0.2
+    - Vector1_E06294B5: 5
+    - Vector1_E96DAB03: 0.05
+    m_Colors:
+    - Color_6F43307A: {r: 0, g: 1, b: 0.8313726, a: 1}
+    - Color_7549CD51: {r: 0.098039225, g: 0.04705883, b: 0.098039225, a: 1}
+    - Color_AA8C3DD8: {r: 0.8705883, g: 0.34117648, b: 0.5019608, a: 1}
+    - Vector2_29A3E020: {r: 1, g: 10, b: 0, a: 0}

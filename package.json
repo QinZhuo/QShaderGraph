@@ -1,0 +1,15 @@
+{
+  "name": "com.qtool.shadergraph",
+  "version": "0.0.1",
+  "displayName": "QShaderGraph",
+  "description": "QShaderGraph",
+  "unity": "2019.1",
+ "keywords": [
+    "shader"
+  ],
+  "author": {
+    "name": "QinZhuo",
+    "url": "https://space.bilibili.com/3981300"
+  }
+}
+
