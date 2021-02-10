@@ -20,6 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - HalftoneTex:
+        m_Texture: {fileID: 2800000, guid: 80a503396b40ea34c92647d18c35abf6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_548E6BF1:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -29,6 +33,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - HalftoneAlphaRemap: 0.9
+    - HalftoneSize: 0.4
     - Height: 0.3
     - HeightOffset: 0.05
     - NoiseScale: 2
@@ -42,11 +48,15 @@ Material:
     - Vector1_AB134E35: 1
     - Vector1_E06294B5: 5
     - Vector1_E96DAB03: 0.05
+    - WidthDivHeight: 0.5
     m_Colors:
-    - Color1: {r: 0.8784314, g: 0.34509796, b: 0.49803913, a: 1}
+    - Color1: {r: 0.8784314, g: 0.3450979, b: 0.49803895, a: 0}
     - Color2: {r: 0, g: 1, b: 0.8313726, a: 1}
     - Color3: {r: 0.09803919, g: 0.0470588, b: 0.09803919, a: 1}
     - Color_6F43307A: {r: 0, g: 1, b: 0.8313726, a: 1}
     - Color_7549CD51: {r: 0.098039225, g: 0.04705883, b: 0.098039225, a: 1}
     - Color_AA8C3DD8: {r: 0.8705883, g: 0.34117648, b: 0.5019608, a: 1}
+    - HalftoneColor: {r: 0, g: 0.9960785, b: 0.8313726, a: 0.29803923}
+    - HalftoneCount: {r: 20, g: 40, b: 0, a: 0}
+    - HalftoneTillingOffset: {r: 1, g: 2, b: 0.11, a: 0}
     - Vector2_29A3E020: {r: 1, g: 10, b: 0, a: 0}
