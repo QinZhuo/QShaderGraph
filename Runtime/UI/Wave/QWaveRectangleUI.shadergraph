@@ -76,7 +76,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"5a4bf50a-b1bd-4bf9-b33e-d03dd02b7399\"\n    },\n    \"m_Name\": \"HalftoneColor\",\n    \"m_DefaultReferenceName\": \"Color_1BC6BA58\",\n    \"m_OverrideReferenceName\": \"HalftoneColor\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.04313725605607033,\n        \"g\": 0.5843137502670288,\n        \"b\": 0.5647059082984924,\n        \"a\": 1.0\n    },\n    \"m_ColorMode\": 0\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"5a4bf50a-b1bd-4bf9-b33e-d03dd02b7399\"\n    },\n    \"m_Name\": \"HalftoneColor\",\n    \"m_DefaultReferenceName\": \"Color_1BC6BA58\",\n    \"m_OverrideReferenceName\": \"HalftoneColor\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.04313725605607033,\n        \"g\": 0.5843137502670288,\n        \"b\": 0.5647059082984924,\n        \"a\": 0.2980392277240753\n    },\n    \"m_ColorMode\": 0\n}"
         },
         {
             "typeInfo": {
@@ -88,19 +88,19 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"f73714e0-ebea-4195-9b73-7fce0de20d54\"\n    },\n    \"m_Name\": \"HalftoneTex\",\n    \"m_DefaultReferenceName\": \"Texture2D_55CD121F\",\n    \"m_OverrideReferenceName\": \"HalftoneTex\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"m_SerializedTexture\": \"{\\\"texture\\\":{\\\"fileID\\\":2800000,\\\"guid\\\":\\\"d32bfda77be41144bba66293b1533103\\\",\\\"type\\\":3}}\",\n        \"m_Guid\": \"\"\n    },\n    \"m_Modifiable\": true,\n    \"m_DefaultType\": 0\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"f73714e0-ebea-4195-9b73-7fce0de20d54\"\n    },\n    \"m_Name\": \"HalftoneTex\",\n    \"m_DefaultReferenceName\": \"Texture2D_55CD121F\",\n    \"m_OverrideReferenceName\": \"HalftoneTex\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"m_SerializedTexture\": \"{\\\"texture\\\":{\\\"fileID\\\":2800000,\\\"guid\\\":\\\"80a503396b40ea34c92647d18c35abf6\\\",\\\"type\\\":3}}\",\n        \"m_Guid\": \"\"\n    },\n    \"m_Modifiable\": true,\n    \"m_DefaultType\": 0\n}"
         },
         {
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"7562c0fb-8539-4efd-a64b-5c95cf2428fa\"\n    },\n    \"m_Name\": \"HalftoneCount\",\n    \"m_DefaultReferenceName\": \"Vector2_A5E4FDB4\",\n    \"m_OverrideReferenceName\": \"HalftoneCount\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"x\": 30.0,\n        \"y\": 30.0,\n        \"z\": 0.0,\n        \"w\": 0.0\n    }\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"7562c0fb-8539-4efd-a64b-5c95cf2428fa\"\n    },\n    \"m_Name\": \"HalftoneCount\",\n    \"m_DefaultReferenceName\": \"Vector2_A5E4FDB4\",\n    \"m_OverrideReferenceName\": \"HalftoneCount\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"x\": 20.0,\n        \"y\": 20.0,\n        \"z\": 0.0,\n        \"w\": 0.0\n    }\n}"
         },
         {
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"47bd6052-5d3c-41ab-883c-a2e64be78972\"\n    },\n    \"m_Name\": \"HalftoneAlphaRemap\",\n    \"m_DefaultReferenceName\": \"Vector1_7BA323F2\",\n    \"m_OverrideReferenceName\": \"HalftoneAlphaRemap\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 0.10000000149011612,\n    \"m_FloatType\": 0,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1.0\n    }\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"47bd6052-5d3c-41ab-883c-a2e64be78972\"\n    },\n    \"m_Name\": \"HalftoneAlphaRemap\",\n    \"m_DefaultReferenceName\": \"Vector1_7BA323F2\",\n    \"m_OverrideReferenceName\": \"HalftoneAlphaRemap\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 0.8999999761581421,\n    \"m_FloatType\": 0,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1.0\n    }\n}"
         }
     ],
     "m_SerializedKeywords": [],
