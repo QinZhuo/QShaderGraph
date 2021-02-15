@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - HalftoneAlphaRemap: 0.9
+    - HalftoneAlphaRemap: 0.83
     - HalftoneSize: 0.4
     - Height: 0.3
     - HeightOffset: 0.05
@@ -58,5 +58,5 @@ Material:
     - Color_AA8C3DD8: {r: 0.8705883, g: 0.34117648, b: 0.5019608, a: 1}
     - HalftoneColor: {r: 0, g: 0.9960785, b: 0.8313726, a: 0.29803923}
     - HalftoneCount: {r: 20, g: 40, b: 0, a: 0}
-    - HalftoneTillingOffset: {r: 1, g: 2, b: 0.11, a: 0}
+    - HalftoneTillingOffset: {r: 0.88, g: 2, b: 0.11, a: 0}
     - Vector2_29A3E020: {r: 1, g: 10, b: 0, a: 0}
