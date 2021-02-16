@@ -1,6 +1,6 @@
 {
   "name": "com.qtool.shadergraph",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "displayName": "QShaderGraph",
   "description": "QShaderGraph",
   "unity": "2019.1",
