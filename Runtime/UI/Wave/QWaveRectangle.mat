@@ -58,8 +58,8 @@ Material:
     - Color_6F43307A: {r: 0, g: 1, b: 0.8313726, a: 1}
     - Color_7549CD51: {r: 0.098039225, g: 0.04705883, b: 0.098039225, a: 1}
     - Color_AA8C3DD8: {r: 0.8705883, g: 0.34117648, b: 0.5019608, a: 1}
-    - HalftoneAlphaSizePosOffset: {r: 0.56, g: -0.33, b: 0, a: 0}
-    - HalftoneColor: {r: 0, g: 0.9960785, b: 0.8313726, a: 0.29803923}
+    - HalftoneAlphaSizePosOffset: {r: -4.7, g: -0.24, b: 0, a: 0}
+    - HalftoneColor: {r: 0, g: 0.99607843, b: 0.8313726, a: 0.08627451}
     - HalftoneCount: {r: 200, g: 400, b: 0, a: 0}
     - HalftoneTillingOffset: {r: 0.88, g: 2, b: 0.11, a: 0}
     - Vector2_29A3E020: {r: 1, g: 10, b: 0, a: 0}
