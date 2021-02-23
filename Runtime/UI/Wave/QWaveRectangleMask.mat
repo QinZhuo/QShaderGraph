@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: QWaveRectangleMask
-  m_Shader: {fileID: 4800000, guid: 4b18627fea35b93479235428f65c1273, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 197ea4d70b0a3544cb3f6ac8bbcf54c6,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - HalftoneTex:
+        m_Texture: {fileID: 2800000, guid: 80a503396b40ea34c92647d18c35abf6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -55,6 +60,7 @@ Material:
     - Speed: 0.1
     - SubWave: 0
     - Vector1_AB134E35: 1
+    - Vector1_B1ABFD55: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -87,6 +93,16 @@ Material:
     - Color1: {r: 0.8784314, g: 0.34509793, b: 0.49803907, a: 0}
     - Color2: {r: 0, g: 1, b: 0.8313726, a: 1}
     - Color3: {r: 0.09803919, g: 0.0470588, b: 0.09803919, a: 1}
+    - Color_45AFB020: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+    - Color_EBC07EAF: {r: 0.6588235, g: 0.19999996, b: 0.9843138, a: 1}
+    - Color_FE849DF5: {r: 0.6588235, g: 0.19607836, b: 0.9843138, a: 1}
+    - HalftoneAlphaSizePosOffset: {r: 0, g: 0, b: 0, a: 0}
+    - HalftoneColor: {r: 0.043137237, g: 0.58431375, b: 0.5647059, a: 0.2980392}
+    - HalftoneTillingOffset: {r: 1, g: 1, b: 0, a: 0}
+    - Halftone_UI_Tile_Halftone_Size: {r: 10, g: 10, b: 1, a: 0.61}
+    - Vector2_604EAF87: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_80F5EB39: {r: 0.7, g: 0.13, b: 0, a: 0}
+    - Vector4_81B37D5: {r: 1, g: 0, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
