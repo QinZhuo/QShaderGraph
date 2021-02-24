@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: QWaveRectangleMask
-  m_Shader: {fileID: -6465566751694194690, guid: 197ea4d70b0a3544cb3f6ac8bbcf54c6,
+  m_Shader: {fileID: -6465566751694194690, guid: 7911fe0fcadf4634a969f6ab594aaf8a,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

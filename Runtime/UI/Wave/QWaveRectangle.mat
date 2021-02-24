@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: QWaveRectangle
-  m_Shader: {fileID: -6465566751694194690, guid: 7911fe0fcadf4634a969f6ab594aaf8a,
+  m_Shader: {fileID: -6465566751694194690, guid: 197ea4d70b0a3544cb3f6ac8bbcf54c6,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -44,6 +44,7 @@ Material:
     - SubWave: 0
     - Vector1_107A7A52: 0.1
     - Vector1_23903953: 0.07
+    - Vector1_47F7ACA7: -0.58
     - Vector1_6E9000E5: 0.2
     - Vector1_7CE531: 0.2
     - Vector1_AB134E35: 1
@@ -68,6 +69,6 @@ Material:
     - HalftoneTillingOffset: {r: 0.88, g: 2, b: 0.11, a: 0}
     - Halftone_UI_Tile_Halftone_Size: {r: 10, g: 10, b: 1, a: 0.61}
     - Vector2_29A3E020: {r: 1, g: 10, b: 0, a: 0}
-    - Vector2_604EAF87: {r: 1, g: 1, b: 0, a: 0}
-    - Vector2_80F5EB39: {r: 0.7, g: 0.13, b: 0, a: 0}
+    - Vector2_604EAF87: {r: 100, g: 100, b: 0, a: 0}
+    - Vector2_80F5EB39: {r: -1.51, g: 1, b: 0, a: 0}
     - Vector4_81B37D5: {r: 1, g: 0, b: 1, a: 1}
