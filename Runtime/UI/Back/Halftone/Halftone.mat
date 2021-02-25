@@ -66,7 +66,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_6556BA3D: 0.1
+    - Vector1_6556BA3D: 10
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -91,7 +91,7 @@ Material:
     m_Colors:
     - Color1: {r: 0.03137255, g: 0.7019608, b: 0.6627451, a: 0.2980392}
     - TrillingOffset: {r: 1, g: 1, b: 0, a: 0}
-    - UI_Tile_Halftone_Size: {r: 10, g: 10, b: 1, a: 1}
+    - UI_Tile_Halftone_Size: {r: 100, g: 100, b: 1, a: 1}
     - Vector4_9570DD59: {r: 2, g: 0.1, b: 0.5, a: 0}
     - Vector4_A0F577CA: {r: 0, g: -0.56, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
