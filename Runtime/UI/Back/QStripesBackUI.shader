@@ -1,4 +1,4 @@
-﻿Shader "QUI/QStripesBackUI"
+﻿Shader "QShaderGraph/QStripesBackUI"
 {
     Properties
 	{

@@ -1,4 +1,4 @@
-﻿Shader "QUI/QWaveBackUI"
+﻿Shader "QShaderGraph/QWaveBackUI"
 {
     Properties
 	{

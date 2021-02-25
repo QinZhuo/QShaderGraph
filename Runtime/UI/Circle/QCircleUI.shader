@@ -1,4 +1,4 @@
-﻿Shader "QUI/QCircleUI"
+﻿Shader "QShaderGraph/QCircleUI"
 {
     Properties
 	{
