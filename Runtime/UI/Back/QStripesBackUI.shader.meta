@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: e0ec036e0972ef54093e74a30cd31ec2
+guid: d5aab31318393fe4f8ac6f74c967de96
 ShaderImporter:
   externalObjects: {}
   defaultTextures: []
   nonModifiableTextures: []
+  preprocessorOverride: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
