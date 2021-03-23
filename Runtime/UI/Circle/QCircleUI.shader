@@ -8,8 +8,7 @@
         _StencilWriteMask("Stencil Write Mask", Float) = 255
         _StencilReadMask("Stencil Read Mask", Float) = 255
         _ColorMask("Color Mask", Float) = 15
-        Vector2_6A46D00F("Scale", Vector) = (10, 10, 0, 0)
-        Vector1_47F7ACA7("Rotate", Float) = 0.6
+        Vector1_13DE78A("InCircle", Float) = 0
         [HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_ShadowMasks("unity_ShadowMasks", 2DArray) = "" {}
@@ -73,7 +72,6 @@
             #define ATTRIBUTES_NEED_TANGENT
             #define ATTRIBUTES_NEED_TEXCOORD0
             #define ATTRIBUTES_NEED_COLOR
-            #define VARYINGS_NEED_POSITION_WS
             #define VARYINGS_NEED_TEXCOORD0
             #define VARYINGS_NEED_COLOR
             #define FEATURES_GRAPH_VERTEX
@@ -107,7 +105,6 @@
         struct Varyings
         {
             float4 positionCS : SV_POSITION;
-            float3 positionWS;
             float4 texCoord0;
             float4 color;
             #if UNITY_ANY_INSTANCING_ENABLED
@@ -125,8 +122,6 @@
         };
         struct SurfaceDescriptionInputs
         {
-            float3 WorldSpacePosition;
-            float4 ScreenPosition;
             float4 uv0;
         };
         struct VertexDescriptionInputs
@@ -138,9 +133,8 @@
         struct PackedVaryings
         {
             float4 positionCS : SV_POSITION;
-            float3 interp0 : TEXCOORD0;
+            float4 interp0 : TEXCOORD0;
             float4 interp1 : TEXCOORD1;
-            float4 interp2 : TEXCOORD2;
             #if UNITY_ANY_INSTANCING_ENABLED
             uint instanceID : CUSTOM_INSTANCE_ID;
             #endif
@@ -159,9 +153,8 @@
         {
             PackedVaryings output;
             output.positionCS = input.positionCS;
-            output.interp0.xyz =  input.positionWS;
-            output.interp1.xyzw =  input.texCoord0;
-            output.interp2.xyzw =  input.color;
+            output.interp0.xyzw =  input.texCoord0;
+            output.interp1.xyzw =  input.color;
             #if UNITY_ANY_INSTANCING_ENABLED
             output.instanceID = input.instanceID;
             #endif
@@ -180,9 +173,8 @@
         {
             Varyings output;
             output.positionCS = input.positionCS;
-            output.positionWS = input.interp0.xyz;
-            output.texCoord0 = input.interp1.xyzw;
-            output.color = input.interp2.xyzw;
+            output.texCoord0 = input.interp0.xyzw;
+            output.color = input.interp1.xyzw;
             #if UNITY_ANY_INSTANCING_ENABLED
             output.instanceID = input.instanceID;
             #endif
@@ -203,8 +195,7 @@
 
             // Graph Properties
             CBUFFER_START(UnityPerMaterial)
-        float2 Vector2_6A46D00F;
-        float Vector1_47F7ACA7;
+        float Vector1_13DE78A;
         CBUFFER_END
 
         // Object and Global properties
@@ -249,103 +240,23 @@
             A_5 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_A_7;
         }
 
-        void Unity_Rotate_Radians_float(float2 UV, float2 Center, float Rotation, out float2 Out)
-        {
-            //rotation matrix
-            UV -= Center;
-            float s = sin(Rotation);
-            float c = cos(Rotation);
-
-            //center rotation matrix
-            float2x2 rMatrix = float2x2(c, -s, s, c);
-            rMatrix *= 0.5;
-            rMatrix += 0.5;
-            rMatrix = rMatrix*2 - 1;
-
-            //multiply the UVs by the rotation matrix
-            UV.xy = mul(UV.xy, rMatrix);
-            UV += Center;
-
-            Out = UV;
-        }
-
-        void Unity_Multiply_float(float A, float B, out float Out)
+        void Unity_Multiply_float(float4 A, float4 B, out float4 Out)
         {
             Out = A * B;
         }
 
-        void Unity_Sine_float(float In, out float Out)
+        void Unity_Ellipse_float(float2 UV, float Width, float Height, out float Out)
         {
-            Out = sin(In);
+            float d = length((UV * 2 - 1) / float2(Width, Height));
+            Out = saturate((1 - d) / fwidth(d));
         }
 
-        void Unity_Remap_float(float In, float2 InMinMax, float2 OutMinMax, out float Out)
+        void Unity_OneMinus_float(float In, out float Out)
         {
-            Out = OutMinMax.x + (In - InMinMax.x) * (OutMinMax.y - OutMinMax.x) / (InMinMax.y - InMinMax.x);
+            Out = 1 - In;
         }
 
-        void Unity_Subtract_float(float A, float B, out float Out)
-        {
-            Out = A - B;
-        }
-
-        void Unity_Round_float(float In, out float Out)
-        {
-            Out = round(In);
-        }
-
-        void Unity_Absolute_float(float In, out float Out)
-        {
-            Out = abs(In);
-        }
-
-        void Unity_Smoothstep_float(float Edge1, float Edge2, float In, out float Out)
-        {
-            Out = smoothstep(Edge1, Edge2, In);
-        }
-
-        struct Bindings_QWaveBack_08a913e1b4ae3e342a78aa488653d6da
-        {
-        };
-
-        void SG_QWaveBack_08a913e1b4ae3e342a78aa488653d6da(float2 Vector2_7C225E21, float2 Vector2_85052A8F, Bindings_QWaveBack_08a913e1b4ae3e342a78aa488653d6da IN, out float OutVector1_1)
-        {
-            float2 _Property_54a14c25195a3c86a689d49986f1212e_Out_0 = Vector2_7C225E21;
-            float2 _TilingAndOffset_e6a722605303a2829ee27007189d2f2c_Out_3;
-            Unity_TilingAndOffset_float(_Property_54a14c25195a3c86a689d49986f1212e_Out_0, float2 (1, 1), float2 (0, 0), _TilingAndOffset_e6a722605303a2829ee27007189d2f2c_Out_3);
-            float _Split_0fd2f5c53cc80d899e631ff367b5d8e4_R_1 = _TilingAndOffset_e6a722605303a2829ee27007189d2f2c_Out_3[0];
-            float _Split_0fd2f5c53cc80d899e631ff367b5d8e4_G_2 = _TilingAndOffset_e6a722605303a2829ee27007189d2f2c_Out_3[1];
-            float _Split_0fd2f5c53cc80d899e631ff367b5d8e4_B_3 = 0;
-            float _Split_0fd2f5c53cc80d899e631ff367b5d8e4_A_4 = 0;
-            float2 _Property_ac931a0f440fed8a841f89d5b698cbf7_Out_0 = Vector2_85052A8F;
-            float _Split_489e4ed0020dbe85b4535e2ca64277f3_R_1 = _Property_ac931a0f440fed8a841f89d5b698cbf7_Out_0[0];
-            float _Split_489e4ed0020dbe85b4535e2ca64277f3_G_2 = _Property_ac931a0f440fed8a841f89d5b698cbf7_Out_0[1];
-            float _Split_489e4ed0020dbe85b4535e2ca64277f3_B_3 = 0;
-            float _Split_489e4ed0020dbe85b4535e2ca64277f3_A_4 = 0;
-            float _Multiply_54a8199f837ee788ab00a47f40299b8e_Out_2;
-            Unity_Multiply_float(_Split_0fd2f5c53cc80d899e631ff367b5d8e4_G_2, _Split_489e4ed0020dbe85b4535e2ca64277f3_G_2, _Multiply_54a8199f837ee788ab00a47f40299b8e_Out_2);
-            float _Multiply_dc559f7a4353ab8f94a19e6c23d9c039_Out_2;
-            Unity_Multiply_float(_Split_0fd2f5c53cc80d899e631ff367b5d8e4_R_1, _Split_489e4ed0020dbe85b4535e2ca64277f3_R_1, _Multiply_dc559f7a4353ab8f94a19e6c23d9c039_Out_2);
-            float _Multiply_32a166c2de17d78cabfce46eae3d77d8_Out_2;
-            Unity_Multiply_float(_Multiply_dc559f7a4353ab8f94a19e6c23d9c039_Out_2, 6.283185, _Multiply_32a166c2de17d78cabfce46eae3d77d8_Out_2);
-            float _Sine_b9118bfcdbcd3682ac95d6039e0733f8_Out_1;
-            Unity_Sine_float(_Multiply_32a166c2de17d78cabfce46eae3d77d8_Out_2, _Sine_b9118bfcdbcd3682ac95d6039e0733f8_Out_1);
-            float _Remap_ac60059380dc5d8f8d3db879ae929ee3_Out_3;
-            Unity_Remap_float(_Sine_b9118bfcdbcd3682ac95d6039e0733f8_Out_1, float2 (-1, 1), float2 (0, 1), _Remap_ac60059380dc5d8f8d3db879ae929ee3_Out_3);
-            float _Subtract_2c6b3c82b8904d8aaa88b05d7bf23fda_Out_2;
-            Unity_Subtract_float(_Multiply_54a8199f837ee788ab00a47f40299b8e_Out_2, _Remap_ac60059380dc5d8f8d3db879ae929ee3_Out_3, _Subtract_2c6b3c82b8904d8aaa88b05d7bf23fda_Out_2);
-            float _Round_51fe680732c14c86b5184256fc275258_Out_1;
-            Unity_Round_float(_Subtract_2c6b3c82b8904d8aaa88b05d7bf23fda_Out_2, _Round_51fe680732c14c86b5184256fc275258_Out_1);
-            float _Subtract_ca44801eeef22784aa7899c11a768bc0_Out_2;
-            Unity_Subtract_float(_Subtract_2c6b3c82b8904d8aaa88b05d7bf23fda_Out_2, _Round_51fe680732c14c86b5184256fc275258_Out_1, _Subtract_ca44801eeef22784aa7899c11a768bc0_Out_2);
-            float _Absolute_ef0c80beff9ace8bbad059632ed57917_Out_1;
-            Unity_Absolute_float(_Subtract_ca44801eeef22784aa7899c11a768bc0_Out_2, _Absolute_ef0c80beff9ace8bbad059632ed57917_Out_1);
-            float _Smoothstep_9435ae35d1ce928e85a27010cb35bc32_Out_3;
-            Unity_Smoothstep_float(0.25, 0.3, _Absolute_ef0c80beff9ace8bbad059632ed57917_Out_1, _Smoothstep_9435ae35d1ce928e85a27010cb35bc32_Out_3);
-            OutVector1_1 = _Smoothstep_9435ae35d1ce928e85a27010cb35bc32_Out_3;
-        }
-
-        void Unity_Multiply_float(float4 A, float4 B, out float4 Out)
+        void Unity_Multiply_float(float A, float B, out float Out)
         {
             Out = A * B;
         }
@@ -378,27 +289,30 @@
         SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
         {
             SurfaceDescription surface = (SurfaceDescription)0;
-            UnityTexture2D _Property_160d343efd900f83805bd5bf910c3e2e_Out_0 = UnityBuildTexture2DStructNoScale(_MainTex);
-            float4 _UV_f414611e2633ce8eae3ae8d0ebd61ef0_Out_0 = IN.uv0;
-            Bindings_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d _QTexture2D_861f84dfebbb74859b02411b2da06a9f;
-            float4 _QTexture2D_861f84dfebbb74859b02411b2da06a9f_Output_1;
-            float _QTexture2D_861f84dfebbb74859b02411b2da06a9f_R_2;
-            float _QTexture2D_861f84dfebbb74859b02411b2da06a9f_G_3;
-            float _QTexture2D_861f84dfebbb74859b02411b2da06a9f_B_4;
-            float _QTexture2D_861f84dfebbb74859b02411b2da06a9f_A_5;
-            SG_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d(float4 (1, 1, 0, 0), _Property_160d343efd900f83805bd5bf910c3e2e_Out_0, (_UV_f414611e2633ce8eae3ae8d0ebd61ef0_Out_0.xy), _QTexture2D_861f84dfebbb74859b02411b2da06a9f, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_Output_1, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_R_2, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_G_3, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_B_4, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_A_5);
-            float4 _ScreenPosition_596f54782917158c8ca15d4a2728b708_Out_0 = float4(IN.ScreenPosition.xy / IN.ScreenPosition.w, 0, 0);
-            float _Property_09969b4f012ee98d905df377dba8a497_Out_0 = Vector1_47F7ACA7;
-            float2 _Rotate_ed566af72281ce8e9ff6e7ae74afab24_Out_3;
-            Unity_Rotate_Radians_float((_ScreenPosition_596f54782917158c8ca15d4a2728b708_Out_0.xy), float2 (0.5, 0.5), _Property_09969b4f012ee98d905df377dba8a497_Out_0, _Rotate_ed566af72281ce8e9ff6e7ae74afab24_Out_3);
-            float2 _Property_89ae66dc2a550d8fa955888a474246f3_Out_0 = Vector2_6A46D00F;
-            Bindings_QWaveBack_08a913e1b4ae3e342a78aa488653d6da _QWaveBack_99926a5b23c2b58ca1ae6285d890172d;
-            float _QWaveBack_99926a5b23c2b58ca1ae6285d890172d_OutVector1_1;
-            SG_QWaveBack_08a913e1b4ae3e342a78aa488653d6da(_Rotate_ed566af72281ce8e9ff6e7ae74afab24_Out_3, _Property_89ae66dc2a550d8fa955888a474246f3_Out_0, _QWaveBack_99926a5b23c2b58ca1ae6285d890172d, _QWaveBack_99926a5b23c2b58ca1ae6285d890172d_OutVector1_1);
-            float4 _Multiply_98011d8908604685baaf5d2836a89bcb_Out_2;
-            Unity_Multiply_float(_QTexture2D_861f84dfebbb74859b02411b2da06a9f_Output_1, (_QWaveBack_99926a5b23c2b58ca1ae6285d890172d_OutVector1_1.xxxx), _Multiply_98011d8908604685baaf5d2836a89bcb_Out_2);
+            UnityTexture2D _Property_342ae035d6dc66818de2b0f35cd2103a_Out_0 = UnityBuildTexture2DStructNoScale(_MainTex);
+            float4 _UV_6bc7cf8f6580b789851fd5689b68104b_Out_0 = IN.uv0;
+            Bindings_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d _QTexture2D_201c831c4641598185a5aff863e3241a;
+            float4 _QTexture2D_201c831c4641598185a5aff863e3241a_Output_1;
+            float _QTexture2D_201c831c4641598185a5aff863e3241a_R_2;
+            float _QTexture2D_201c831c4641598185a5aff863e3241a_G_3;
+            float _QTexture2D_201c831c4641598185a5aff863e3241a_B_4;
+            float _QTexture2D_201c831c4641598185a5aff863e3241a_A_5;
+            SG_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d(float4 (1, 1, 0, 0), _Property_342ae035d6dc66818de2b0f35cd2103a_Out_0, (_UV_6bc7cf8f6580b789851fd5689b68104b_Out_0.xy), _QTexture2D_201c831c4641598185a5aff863e3241a, _QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, _QTexture2D_201c831c4641598185a5aff863e3241a_R_2, _QTexture2D_201c831c4641598185a5aff863e3241a_G_3, _QTexture2D_201c831c4641598185a5aff863e3241a_B_4, _QTexture2D_201c831c4641598185a5aff863e3241a_A_5);
+            float4 _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2;
+            Unity_Multiply_float(_QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, float4(2, 2, 2, 2), _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2);
+            float _Ellipse_d56c56216c11ec8986ba7e1e6abdb5fa_Out_4;
+            Unity_Ellipse_float(IN.uv0.xy, 1, 1, _Ellipse_d56c56216c11ec8986ba7e1e6abdb5fa_Out_4);
+            float _Property_0c07c3240bacb085835f208e2deb9fb2_Out_0 = Vector1_13DE78A;
+            float _Ellipse_67d22fc076d1b88899dc72c5284e1d6d_Out_4;
+            Unity_Ellipse_float(IN.uv0.xy, _Property_0c07c3240bacb085835f208e2deb9fb2_Out_0, _Property_0c07c3240bacb085835f208e2deb9fb2_Out_0, _Ellipse_67d22fc076d1b88899dc72c5284e1d6d_Out_4);
+            float _OneMinus_02d481ff37c6898bac75d2040a645d58_Out_1;
+            Unity_OneMinus_float(_Ellipse_67d22fc076d1b88899dc72c5284e1d6d_Out_4, _OneMinus_02d481ff37c6898bac75d2040a645d58_Out_1);
+            float _Multiply_27b5b44d293cc28ead9d54eed6ddfa6b_Out_2;
+            Unity_Multiply_float(_Ellipse_d56c56216c11ec8986ba7e1e6abdb5fa_Out_4, _OneMinus_02d481ff37c6898bac75d2040a645d58_Out_1, _Multiply_27b5b44d293cc28ead9d54eed6ddfa6b_Out_2);
+            float4 _Multiply_b58dfb83f8754c8a8057f726c2c07533_Out_2;
+            Unity_Multiply_float(_Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2, (_Multiply_27b5b44d293cc28ead9d54eed6ddfa6b_Out_2.xxxx), _Multiply_b58dfb83f8754c8a8057f726c2c07533_Out_2);
             surface.BaseColor = IsGammaSpace() ? float3(0.5, 0.5, 0.5) : SRGBToLinear(float3(0.5, 0.5, 0.5));
-            surface.SpriteColor = _Multiply_98011d8908604685baaf5d2836a89bcb_Out_2;
+            surface.SpriteColor = _Multiply_b58dfb83f8754c8a8057f726c2c07533_Out_2;
             surface.Alpha = 1;
             return surface;
         }
@@ -426,8 +340,6 @@
 
 
 
-            output.WorldSpacePosition =          input.positionWS;
-            output.ScreenPosition =              ComputeScreenPos(TransformWorldToHClip(input.positionWS), _ProjectionParams.x);
             output.uv0 =                         input.texCoord0;
         #if defined(SHADER_STAGE_FRAGMENT) && defined(VARYINGS_NEED_CULLFACE)
         #define BUILD_SURFACE_DESCRIPTION_INPUTS_OUTPUT_FACESIGN output.FaceSign =                    IS_FRONT_VFACE(input.cullFace, true, false);
@@ -489,7 +401,6 @@
             #define ATTRIBUTES_NEED_TANGENT
             #define ATTRIBUTES_NEED_TEXCOORD0
             #define ATTRIBUTES_NEED_COLOR
-            #define VARYINGS_NEED_POSITION_WS
             #define VARYINGS_NEED_TEXCOORD0
             #define VARYINGS_NEED_COLOR
             #define FEATURES_GRAPH_VERTEX
@@ -523,7 +434,6 @@
         struct Varyings
         {
             float4 positionCS : SV_POSITION;
-            float3 positionWS;
             float4 texCoord0;
             float4 color;
             #if UNITY_ANY_INSTANCING_ENABLED
@@ -541,8 +451,6 @@
         };
         struct SurfaceDescriptionInputs
         {
-            float3 WorldSpacePosition;
-            float4 ScreenPosition;
             float4 uv0;
         };
         struct VertexDescriptionInputs
@@ -554,9 +462,8 @@
         struct PackedVaryings
         {
             float4 positionCS : SV_POSITION;
-            float3 interp0 : TEXCOORD0;
+            float4 interp0 : TEXCOORD0;
             float4 interp1 : TEXCOORD1;
-            float4 interp2 : TEXCOORD2;
             #if UNITY_ANY_INSTANCING_ENABLED
             uint instanceID : CUSTOM_INSTANCE_ID;
             #endif
@@ -575,9 +482,8 @@
         {
             PackedVaryings output;
             output.positionCS = input.positionCS;
-            output.interp0.xyz =  input.positionWS;
-            output.interp1.xyzw =  input.texCoord0;
-            output.interp2.xyzw =  input.color;
+            output.interp0.xyzw =  input.texCoord0;
+            output.interp1.xyzw =  input.color;
             #if UNITY_ANY_INSTANCING_ENABLED
             output.instanceID = input.instanceID;
             #endif
@@ -596,9 +502,8 @@
         {
             Varyings output;
             output.positionCS = input.positionCS;
-            output.positionWS = input.interp0.xyz;
-            output.texCoord0 = input.interp1.xyzw;
-            output.color = input.interp2.xyzw;
+            output.texCoord0 = input.interp0.xyzw;
+            output.color = input.interp1.xyzw;
             #if UNITY_ANY_INSTANCING_ENABLED
             output.instanceID = input.instanceID;
             #endif
@@ -619,8 +524,7 @@
 
             // Graph Properties
             CBUFFER_START(UnityPerMaterial)
-        float2 Vector2_6A46D00F;
-        float Vector1_47F7ACA7;
+        float Vector1_13DE78A;
         CBUFFER_END
 
         // Object and Global properties
@@ -665,103 +569,23 @@
             A_5 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_A_7;
         }
 
-        void Unity_Rotate_Radians_float(float2 UV, float2 Center, float Rotation, out float2 Out)
-        {
-            //rotation matrix
-            UV -= Center;
-            float s = sin(Rotation);
-            float c = cos(Rotation);
-
-            //center rotation matrix
-            float2x2 rMatrix = float2x2(c, -s, s, c);
-            rMatrix *= 0.5;
-            rMatrix += 0.5;
-            rMatrix = rMatrix*2 - 1;
-
-            //multiply the UVs by the rotation matrix
-            UV.xy = mul(UV.xy, rMatrix);
-            UV += Center;
-
-            Out = UV;
-        }
-
-        void Unity_Multiply_float(float A, float B, out float Out)
+        void Unity_Multiply_float(float4 A, float4 B, out float4 Out)
         {
             Out = A * B;
         }
 
-        void Unity_Sine_float(float In, out float Out)
+        void Unity_Ellipse_float(float2 UV, float Width, float Height, out float Out)
         {
-            Out = sin(In);
+            float d = length((UV * 2 - 1) / float2(Width, Height));
+            Out = saturate((1 - d) / fwidth(d));
         }
 
-        void Unity_Remap_float(float In, float2 InMinMax, float2 OutMinMax, out float Out)
+        void Unity_OneMinus_float(float In, out float Out)
         {
-            Out = OutMinMax.x + (In - InMinMax.x) * (OutMinMax.y - OutMinMax.x) / (InMinMax.y - InMinMax.x);
+            Out = 1 - In;
         }
 
-        void Unity_Subtract_float(float A, float B, out float Out)
-        {
-            Out = A - B;
-        }
-
-        void Unity_Round_float(float In, out float Out)
-        {
-            Out = round(In);
-        }
-
-        void Unity_Absolute_float(float In, out float Out)
-        {
-            Out = abs(In);
-        }
-
-        void Unity_Smoothstep_float(float Edge1, float Edge2, float In, out float Out)
-        {
-            Out = smoothstep(Edge1, Edge2, In);
-        }
-
-        struct Bindings_QWaveBack_08a913e1b4ae3e342a78aa488653d6da
-        {
-        };
-
-        void SG_QWaveBack_08a913e1b4ae3e342a78aa488653d6da(float2 Vector2_7C225E21, float2 Vector2_85052A8F, Bindings_QWaveBack_08a913e1b4ae3e342a78aa488653d6da IN, out float OutVector1_1)
-        {
-            float2 _Property_54a14c25195a3c86a689d49986f1212e_Out_0 = Vector2_7C225E21;
-            float2 _TilingAndOffset_e6a722605303a2829ee27007189d2f2c_Out_3;
-            Unity_TilingAndOffset_float(_Property_54a14c25195a3c86a689d49986f1212e_Out_0, float2 (1, 1), float2 (0, 0), _TilingAndOffset_e6a722605303a2829ee27007189d2f2c_Out_3);
-            float _Split_0fd2f5c53cc80d899e631ff367b5d8e4_R_1 = _TilingAndOffset_e6a722605303a2829ee27007189d2f2c_Out_3[0];
-            float _Split_0fd2f5c53cc80d899e631ff367b5d8e4_G_2 = _TilingAndOffset_e6a722605303a2829ee27007189d2f2c_Out_3[1];
-            float _Split_0fd2f5c53cc80d899e631ff367b5d8e4_B_3 = 0;
-            float _Split_0fd2f5c53cc80d899e631ff367b5d8e4_A_4 = 0;
-            float2 _Property_ac931a0f440fed8a841f89d5b698cbf7_Out_0 = Vector2_85052A8F;
-            float _Split_489e4ed0020dbe85b4535e2ca64277f3_R_1 = _Property_ac931a0f440fed8a841f89d5b698cbf7_Out_0[0];
-            float _Split_489e4ed0020dbe85b4535e2ca64277f3_G_2 = _Property_ac931a0f440fed8a841f89d5b698cbf7_Out_0[1];
-            float _Split_489e4ed0020dbe85b4535e2ca64277f3_B_3 = 0;
-            float _Split_489e4ed0020dbe85b4535e2ca64277f3_A_4 = 0;
-            float _Multiply_54a8199f837ee788ab00a47f40299b8e_Out_2;
-            Unity_Multiply_float(_Split_0fd2f5c53cc80d899e631ff367b5d8e4_G_2, _Split_489e4ed0020dbe85b4535e2ca64277f3_G_2, _Multiply_54a8199f837ee788ab00a47f40299b8e_Out_2);
-            float _Multiply_dc559f7a4353ab8f94a19e6c23d9c039_Out_2;
-            Unity_Multiply_float(_Split_0fd2f5c53cc80d899e631ff367b5d8e4_R_1, _Split_489e4ed0020dbe85b4535e2ca64277f3_R_1, _Multiply_dc559f7a4353ab8f94a19e6c23d9c039_Out_2);
-            float _Multiply_32a166c2de17d78cabfce46eae3d77d8_Out_2;
-            Unity_Multiply_float(_Multiply_dc559f7a4353ab8f94a19e6c23d9c039_Out_2, 6.283185, _Multiply_32a166c2de17d78cabfce46eae3d77d8_Out_2);
-            float _Sine_b9118bfcdbcd3682ac95d6039e0733f8_Out_1;
-            Unity_Sine_float(_Multiply_32a166c2de17d78cabfce46eae3d77d8_Out_2, _Sine_b9118bfcdbcd3682ac95d6039e0733f8_Out_1);
-            float _Remap_ac60059380dc5d8f8d3db879ae929ee3_Out_3;
-            Unity_Remap_float(_Sine_b9118bfcdbcd3682ac95d6039e0733f8_Out_1, float2 (-1, 1), float2 (0, 1), _Remap_ac60059380dc5d8f8d3db879ae929ee3_Out_3);
-            float _Subtract_2c6b3c82b8904d8aaa88b05d7bf23fda_Out_2;
-            Unity_Subtract_float(_Multiply_54a8199f837ee788ab00a47f40299b8e_Out_2, _Remap_ac60059380dc5d8f8d3db879ae929ee3_Out_3, _Subtract_2c6b3c82b8904d8aaa88b05d7bf23fda_Out_2);
-            float _Round_51fe680732c14c86b5184256fc275258_Out_1;
-            Unity_Round_float(_Subtract_2c6b3c82b8904d8aaa88b05d7bf23fda_Out_2, _Round_51fe680732c14c86b5184256fc275258_Out_1);
-            float _Subtract_ca44801eeef22784aa7899c11a768bc0_Out_2;
-            Unity_Subtract_float(_Subtract_2c6b3c82b8904d8aaa88b05d7bf23fda_Out_2, _Round_51fe680732c14c86b5184256fc275258_Out_1, _Subtract_ca44801eeef22784aa7899c11a768bc0_Out_2);
-            float _Absolute_ef0c80beff9ace8bbad059632ed57917_Out_1;
-            Unity_Absolute_float(_Subtract_ca44801eeef22784aa7899c11a768bc0_Out_2, _Absolute_ef0c80beff9ace8bbad059632ed57917_Out_1);
-            float _Smoothstep_9435ae35d1ce928e85a27010cb35bc32_Out_3;
-            Unity_Smoothstep_float(0.25, 0.3, _Absolute_ef0c80beff9ace8bbad059632ed57917_Out_1, _Smoothstep_9435ae35d1ce928e85a27010cb35bc32_Out_3);
-            OutVector1_1 = _Smoothstep_9435ae35d1ce928e85a27010cb35bc32_Out_3;
-        }
-
-        void Unity_Multiply_float(float4 A, float4 B, out float4 Out)
+        void Unity_Multiply_float(float A, float B, out float Out)
         {
             Out = A * B;
         }
@@ -794,27 +618,30 @@
         SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
         {
             SurfaceDescription surface = (SurfaceDescription)0;
-            UnityTexture2D _Property_160d343efd900f83805bd5bf910c3e2e_Out_0 = UnityBuildTexture2DStructNoScale(_MainTex);
-            float4 _UV_f414611e2633ce8eae3ae8d0ebd61ef0_Out_0 = IN.uv0;
-            Bindings_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d _QTexture2D_861f84dfebbb74859b02411b2da06a9f;
-            float4 _QTexture2D_861f84dfebbb74859b02411b2da06a9f_Output_1;
-            float _QTexture2D_861f84dfebbb74859b02411b2da06a9f_R_2;
-            float _QTexture2D_861f84dfebbb74859b02411b2da06a9f_G_3;
-            float _QTexture2D_861f84dfebbb74859b02411b2da06a9f_B_4;
-            float _QTexture2D_861f84dfebbb74859b02411b2da06a9f_A_5;
-            SG_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d(float4 (1, 1, 0, 0), _Property_160d343efd900f83805bd5bf910c3e2e_Out_0, (_UV_f414611e2633ce8eae3ae8d0ebd61ef0_Out_0.xy), _QTexture2D_861f84dfebbb74859b02411b2da06a9f, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_Output_1, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_R_2, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_G_3, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_B_4, _QTexture2D_861f84dfebbb74859b02411b2da06a9f_A_5);
-            float4 _ScreenPosition_596f54782917158c8ca15d4a2728b708_Out_0 = float4(IN.ScreenPosition.xy / IN.ScreenPosition.w, 0, 0);
-            float _Property_09969b4f012ee98d905df377dba8a497_Out_0 = Vector1_47F7ACA7;
-            float2 _Rotate_ed566af72281ce8e9ff6e7ae74afab24_Out_3;
-            Unity_Rotate_Radians_float((_ScreenPosition_596f54782917158c8ca15d4a2728b708_Out_0.xy), float2 (0.5, 0.5), _Property_09969b4f012ee98d905df377dba8a497_Out_0, _Rotate_ed566af72281ce8e9ff6e7ae74afab24_Out_3);
-            float2 _Property_89ae66dc2a550d8fa955888a474246f3_Out_0 = Vector2_6A46D00F;
-            Bindings_QWaveBack_08a913e1b4ae3e342a78aa488653d6da _QWaveBack_99926a5b23c2b58ca1ae6285d890172d;
-            float _QWaveBack_99926a5b23c2b58ca1ae6285d890172d_OutVector1_1;
-            SG_QWaveBack_08a913e1b4ae3e342a78aa488653d6da(_Rotate_ed566af72281ce8e9ff6e7ae74afab24_Out_3, _Property_89ae66dc2a550d8fa955888a474246f3_Out_0, _QWaveBack_99926a5b23c2b58ca1ae6285d890172d, _QWaveBack_99926a5b23c2b58ca1ae6285d890172d_OutVector1_1);
-            float4 _Multiply_98011d8908604685baaf5d2836a89bcb_Out_2;
-            Unity_Multiply_float(_QTexture2D_861f84dfebbb74859b02411b2da06a9f_Output_1, (_QWaveBack_99926a5b23c2b58ca1ae6285d890172d_OutVector1_1.xxxx), _Multiply_98011d8908604685baaf5d2836a89bcb_Out_2);
+            UnityTexture2D _Property_342ae035d6dc66818de2b0f35cd2103a_Out_0 = UnityBuildTexture2DStructNoScale(_MainTex);
+            float4 _UV_6bc7cf8f6580b789851fd5689b68104b_Out_0 = IN.uv0;
+            Bindings_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d _QTexture2D_201c831c4641598185a5aff863e3241a;
+            float4 _QTexture2D_201c831c4641598185a5aff863e3241a_Output_1;
+            float _QTexture2D_201c831c4641598185a5aff863e3241a_R_2;
+            float _QTexture2D_201c831c4641598185a5aff863e3241a_G_3;
+            float _QTexture2D_201c831c4641598185a5aff863e3241a_B_4;
+            float _QTexture2D_201c831c4641598185a5aff863e3241a_A_5;
+            SG_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d(float4 (1, 1, 0, 0), _Property_342ae035d6dc66818de2b0f35cd2103a_Out_0, (_UV_6bc7cf8f6580b789851fd5689b68104b_Out_0.xy), _QTexture2D_201c831c4641598185a5aff863e3241a, _QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, _QTexture2D_201c831c4641598185a5aff863e3241a_R_2, _QTexture2D_201c831c4641598185a5aff863e3241a_G_3, _QTexture2D_201c831c4641598185a5aff863e3241a_B_4, _QTexture2D_201c831c4641598185a5aff863e3241a_A_5);
+            float4 _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2;
+            Unity_Multiply_float(_QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, float4(2, 2, 2, 2), _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2);
+            float _Ellipse_d56c56216c11ec8986ba7e1e6abdb5fa_Out_4;
+            Unity_Ellipse_float(IN.uv0.xy, 1, 1, _Ellipse_d56c56216c11ec8986ba7e1e6abdb5fa_Out_4);
+            float _Property_0c07c3240bacb085835f208e2deb9fb2_Out_0 = Vector1_13DE78A;
+            float _Ellipse_67d22fc076d1b88899dc72c5284e1d6d_Out_4;
+            Unity_Ellipse_float(IN.uv0.xy, _Property_0c07c3240bacb085835f208e2deb9fb2_Out_0, _Property_0c07c3240bacb085835f208e2deb9fb2_Out_0, _Ellipse_67d22fc076d1b88899dc72c5284e1d6d_Out_4);
+            float _OneMinus_02d481ff37c6898bac75d2040a645d58_Out_1;
+            Unity_OneMinus_float(_Ellipse_67d22fc076d1b88899dc72c5284e1d6d_Out_4, _OneMinus_02d481ff37c6898bac75d2040a645d58_Out_1);
+            float _Multiply_27b5b44d293cc28ead9d54eed6ddfa6b_Out_2;
+            Unity_Multiply_float(_Ellipse_d56c56216c11ec8986ba7e1e6abdb5fa_Out_4, _OneMinus_02d481ff37c6898bac75d2040a645d58_Out_1, _Multiply_27b5b44d293cc28ead9d54eed6ddfa6b_Out_2);
+            float4 _Multiply_b58dfb83f8754c8a8057f726c2c07533_Out_2;
+            Unity_Multiply_float(_Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2, (_Multiply_27b5b44d293cc28ead9d54eed6ddfa6b_Out_2.xxxx), _Multiply_b58dfb83f8754c8a8057f726c2c07533_Out_2);
             surface.BaseColor = IsGammaSpace() ? float3(0.5, 0.5, 0.5) : SRGBToLinear(float3(0.5, 0.5, 0.5));
-            surface.SpriteColor = _Multiply_98011d8908604685baaf5d2836a89bcb_Out_2;
+            surface.SpriteColor = _Multiply_b58dfb83f8754c8a8057f726c2c07533_Out_2;
             surface.Alpha = 1;
             return surface;
         }
@@ -842,8 +669,6 @@
 
 
 
-            output.WorldSpacePosition =          input.positionWS;
-            output.ScreenPosition =              ComputeScreenPos(TransformWorldToHClip(input.positionWS), _ProjectionParams.x);
             output.uv0 =                         input.texCoord0;
         #if defined(SHADER_STAGE_FRAGMENT) && defined(VARYINGS_NEED_CULLFACE)
         #define BUILD_SURFACE_DESCRIPTION_INPUTS_OUTPUT_FACESIGN output.FaceSign =                    IS_FRONT_VFACE(input.cullFace, true, false);
