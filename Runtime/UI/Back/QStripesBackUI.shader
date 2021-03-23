@@ -251,11 +251,6 @@
             A_5 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_A_7;
         }
 
-        void Unity_Multiply_float(float4 A, float4 B, out float4 Out)
-        {
-            Out = A * B;
-        }
-
         void Unity_Rotate_Degrees_float(float2 UV, float2 Center, float Rotation, out float2 Out)
         {
             //rotation matrix
@@ -351,6 +346,11 @@
             Output_1 = _Smoothstep_bba4013aa47ded85a7b9598af3359bfb_Out_3;
         }
 
+        void Unity_Multiply_float(float4 A, float4 B, out float4 Out)
+        {
+            Out = A * B;
+        }
+
             // Graph Vertex
             struct VertexDescription
         {
@@ -388,8 +388,6 @@
             float _QTexture2D_201c831c4641598185a5aff863e3241a_B_4;
             float _QTexture2D_201c831c4641598185a5aff863e3241a_A_5;
             SG_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d(float4 (1, 1, 0, 0), _Property_342ae035d6dc66818de2b0f35cd2103a_Out_0, (_UV_6bc7cf8f6580b789851fd5689b68104b_Out_0.xy), _QTexture2D_201c831c4641598185a5aff863e3241a, _QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, _QTexture2D_201c831c4641598185a5aff863e3241a_R_2, _QTexture2D_201c831c4641598185a5aff863e3241a_G_3, _QTexture2D_201c831c4641598185a5aff863e3241a_B_4, _QTexture2D_201c831c4641598185a5aff863e3241a_A_5);
-            float4 _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2;
-            Unity_Multiply_float(_QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, float4(2, 2, 2, 2), _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2);
             float4 _ScreenPosition_e6186165f26ada81ba1a0ae5e7f21b83_Out_0 = float4(IN.ScreenPosition.xy / IN.ScreenPosition.w, 0, 0);
             float _Property_09969b4f012ee98d905df377dba8a497_Out_0 = Vector1_47F7ACA7;
             float2 _Rotate_f758e8e42488608bb8e5636f67264b34_Out_3;
@@ -403,10 +401,10 @@
             Bindings_QStripesBack_22adf84759a732142b435ff5654e1fa7 _QStripesBack_6bd0c9728a9ce984af510be0cf309f09;
             float _QStripesBack_6bd0c9728a9ce984af510be0cf309f09_Output_1;
             SG_QStripesBack_22adf84759a732142b435ff5654e1fa7(_Rotate_f758e8e42488608bb8e5636f67264b34_Out_3, _Split_fa97af63d954f784aff32ec773af9bfc_R_1, _Split_fa97af63d954f784aff32ec773af9bfc_G_2, _Property_cb51952d8ad0c2838d5ce5a471c2ae24_Out_0, _QStripesBack_6bd0c9728a9ce984af510be0cf309f09, _QStripesBack_6bd0c9728a9ce984af510be0cf309f09_Output_1);
-            float4 _Multiply_0316b8b08def415ca54ab2e1cd69d888_Out_2;
-            Unity_Multiply_float(_Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2, (_QStripesBack_6bd0c9728a9ce984af510be0cf309f09_Output_1.xxxx), _Multiply_0316b8b08def415ca54ab2e1cd69d888_Out_2);
+            float4 _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2;
+            Unity_Multiply_float(_QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, (_QStripesBack_6bd0c9728a9ce984af510be0cf309f09_Output_1.xxxx), _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2);
             surface.BaseColor = IsGammaSpace() ? float3(0.5, 0.5, 0.5) : SRGBToLinear(float3(0.5, 0.5, 0.5));
-            surface.SpriteColor = _Multiply_0316b8b08def415ca54ab2e1cd69d888_Out_2;
+            surface.SpriteColor = _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2;
             surface.Alpha = 1;
             return surface;
         }
@@ -674,11 +672,6 @@
             A_5 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_A_7;
         }
 
-        void Unity_Multiply_float(float4 A, float4 B, out float4 Out)
-        {
-            Out = A * B;
-        }
-
         void Unity_Rotate_Degrees_float(float2 UV, float2 Center, float Rotation, out float2 Out)
         {
             //rotation matrix
@@ -774,6 +767,11 @@
             Output_1 = _Smoothstep_bba4013aa47ded85a7b9598af3359bfb_Out_3;
         }
 
+        void Unity_Multiply_float(float4 A, float4 B, out float4 Out)
+        {
+            Out = A * B;
+        }
+
             // Graph Vertex
             struct VertexDescription
         {
@@ -811,8 +809,6 @@
             float _QTexture2D_201c831c4641598185a5aff863e3241a_B_4;
             float _QTexture2D_201c831c4641598185a5aff863e3241a_A_5;
             SG_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d(float4 (1, 1, 0, 0), _Property_342ae035d6dc66818de2b0f35cd2103a_Out_0, (_UV_6bc7cf8f6580b789851fd5689b68104b_Out_0.xy), _QTexture2D_201c831c4641598185a5aff863e3241a, _QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, _QTexture2D_201c831c4641598185a5aff863e3241a_R_2, _QTexture2D_201c831c4641598185a5aff863e3241a_G_3, _QTexture2D_201c831c4641598185a5aff863e3241a_B_4, _QTexture2D_201c831c4641598185a5aff863e3241a_A_5);
-            float4 _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2;
-            Unity_Multiply_float(_QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, float4(2, 2, 2, 2), _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2);
             float4 _ScreenPosition_e6186165f26ada81ba1a0ae5e7f21b83_Out_0 = float4(IN.ScreenPosition.xy / IN.ScreenPosition.w, 0, 0);
             float _Property_09969b4f012ee98d905df377dba8a497_Out_0 = Vector1_47F7ACA7;
             float2 _Rotate_f758e8e42488608bb8e5636f67264b34_Out_3;
@@ -826,10 +822,10 @@
             Bindings_QStripesBack_22adf84759a732142b435ff5654e1fa7 _QStripesBack_6bd0c9728a9ce984af510be0cf309f09;
             float _QStripesBack_6bd0c9728a9ce984af510be0cf309f09_Output_1;
             SG_QStripesBack_22adf84759a732142b435ff5654e1fa7(_Rotate_f758e8e42488608bb8e5636f67264b34_Out_3, _Split_fa97af63d954f784aff32ec773af9bfc_R_1, _Split_fa97af63d954f784aff32ec773af9bfc_G_2, _Property_cb51952d8ad0c2838d5ce5a471c2ae24_Out_0, _QStripesBack_6bd0c9728a9ce984af510be0cf309f09, _QStripesBack_6bd0c9728a9ce984af510be0cf309f09_Output_1);
-            float4 _Multiply_0316b8b08def415ca54ab2e1cd69d888_Out_2;
-            Unity_Multiply_float(_Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2, (_QStripesBack_6bd0c9728a9ce984af510be0cf309f09_Output_1.xxxx), _Multiply_0316b8b08def415ca54ab2e1cd69d888_Out_2);
+            float4 _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2;
+            Unity_Multiply_float(_QTexture2D_201c831c4641598185a5aff863e3241a_Output_1, (_QStripesBack_6bd0c9728a9ce984af510be0cf309f09_Output_1.xxxx), _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2);
             surface.BaseColor = IsGammaSpace() ? float3(0.5, 0.5, 0.5) : SRGBToLinear(float3(0.5, 0.5, 0.5));
-            surface.SpriteColor = _Multiply_0316b8b08def415ca54ab2e1cd69d888_Out_2;
+            surface.SpriteColor = _Multiply_5dfa7b8d18140586ada61b17cef04528_Out_2;
             surface.Alpha = 1;
             return surface;
         }
