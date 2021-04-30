@@ -14,7 +14,7 @@ public static  class QShaderGraphEditor
         code = code.Insert(startIndex,addCode);
         return code;
     }
-    [MenuItem("Assets/Create/Shader/粘贴生成UIShader")]
+    [MenuItem("Assets/工具/粘贴生成UIShader",priority = 0)]
     public static void CreateUIShader()
     {
        var window=EditorWindow.GetWindowWithRect<CreateShaderWindow>(new Rect(Screen.width/2-200,Screen.height/2,400,140));
