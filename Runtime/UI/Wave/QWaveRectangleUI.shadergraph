@@ -2846,7 +2846,7 @@
     "m_Group": {
         "m_Id": "7f3594cf6e0a43eca2de3c276e41e9eb"
     },
-    "m_Name": "QWave",
+    "m_Name": "QMultiWave",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -3403,7 +3403,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "QWave",
+    "m_Name": "QMultiWave",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {

@@ -220,33 +220,69 @@
             Out = UV * Tiling + Offset;
         }
 
+        void Unity_Preview_float(float In, out float Out)
+        {
+            Out = In;
+        }
+
+        void Unity_Step_float2(float2 Edge, float2 In, out float2 Out)
+        {
+            Out = step(Edge, In);
+        }
+
+        void Unity_Multiply_float(float2 A, float2 B, out float2 Out)
+        {
+            Out = A * B;
+        }
+
+        void Unity_Multiply_float(float A, float B, out float Out)
+        {
+            Out = A * B;
+        }
+
         struct Bindings_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d
         {
         };
 
         void SG_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d(float4 Vector4_19C7703B, UnityTexture2D Texture2D_CA72CD38, float2 Vector2_F19B6F36, Bindings_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d IN, out float4 Output_1, out float R_2, out float G_3, out float B_4, out float A_5)
         {
-            UnityTexture2D _Property_c48957278f16b68480a4610fa04852a8_Out_0 = Texture2D_CA72CD38;
-            float2 _Property_26c140d9f83e8385a08b4c849f1db62c_Out_0 = Vector2_F19B6F36;
-            float4 _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0 = Vector4_19C7703B;
-            float _Split_1b16b5375c32e78793936576a4cc5a63_R_1 = _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0[0];
-            float _Split_1b16b5375c32e78793936576a4cc5a63_G_2 = _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0[1];
-            float _Split_1b16b5375c32e78793936576a4cc5a63_B_3 = _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0[2];
-            float _Split_1b16b5375c32e78793936576a4cc5a63_A_4 = _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0[3];
-            float2 _Vector2_3155c819a109bb8b859ad7ae374f8856_Out_0 = float2(_Split_1b16b5375c32e78793936576a4cc5a63_R_1, _Split_1b16b5375c32e78793936576a4cc5a63_G_2);
-            float2 _Vector2_b34ef76f94222681995d96057a1330e3_Out_0 = float2(_Split_1b16b5375c32e78793936576a4cc5a63_B_3, _Split_1b16b5375c32e78793936576a4cc5a63_A_4);
-            float2 _TilingAndOffset_48e1fa86cca7d484a1cd06c8fe10c47d_Out_3;
-            Unity_TilingAndOffset_float(_Property_26c140d9f83e8385a08b4c849f1db62c_Out_0, _Vector2_3155c819a109bb8b859ad7ae374f8856_Out_0, _Vector2_b34ef76f94222681995d96057a1330e3_Out_0, _TilingAndOffset_48e1fa86cca7d484a1cd06c8fe10c47d_Out_3);
-            float4 _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0 = SAMPLE_TEXTURE2D(_Property_c48957278f16b68480a4610fa04852a8_Out_0.tex, _Property_c48957278f16b68480a4610fa04852a8_Out_0.samplerstate, _TilingAndOffset_48e1fa86cca7d484a1cd06c8fe10c47d_Out_3);
-            float _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_R_4 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0.r;
-            float _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_G_5 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0.g;
-            float _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_B_6 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0.b;
-            float _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_A_7 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0.a;
-            Output_1 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0;
-            R_2 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_R_4;
-            G_3 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_G_5;
-            B_4 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_B_6;
-            A_5 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_A_7;
+            UnityTexture2D _Property_c20210f75e5841c8b4b7250cc2e4321e_Out_0 = Texture2D_CA72CD38;
+            float2 _Property_10f7dba9ddb54aba84adb08a27e022b0_Out_0 = Vector2_F19B6F36;
+            float4 _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0 = Vector4_19C7703B;
+            float _Split_117dfb2a277c4a979671228912a2d2f1_R_1 = _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0[0];
+            float _Split_117dfb2a277c4a979671228912a2d2f1_G_2 = _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0[1];
+            float _Split_117dfb2a277c4a979671228912a2d2f1_B_3 = _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0[2];
+            float _Split_117dfb2a277c4a979671228912a2d2f1_A_4 = _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0[3];
+            float2 _Vector2_9c22647769ea4c96af77199c7f700b00_Out_0 = float2(_Split_117dfb2a277c4a979671228912a2d2f1_R_1, _Split_117dfb2a277c4a979671228912a2d2f1_G_2);
+            float2 _Vector2_729da08c140e4f0db6fd3c2399651a00_Out_0 = float2(_Split_117dfb2a277c4a979671228912a2d2f1_B_3, _Split_117dfb2a277c4a979671228912a2d2f1_A_4);
+            float2 _TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3;
+            Unity_TilingAndOffset_float(_Property_10f7dba9ddb54aba84adb08a27e022b0_Out_0, _Vector2_9c22647769ea4c96af77199c7f700b00_Out_0, _Vector2_729da08c140e4f0db6fd3c2399651a00_Out_0, _TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3);
+            float4 _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0 = SAMPLE_TEXTURE2D(_Property_c20210f75e5841c8b4b7250cc2e4321e_Out_0.tex, _Property_c20210f75e5841c8b4b7250cc2e4321e_Out_0.samplerstate, _TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3);
+            float _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_R_4 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0.r;
+            float _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_G_5 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0.g;
+            float _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_B_6 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0.b;
+            float _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_A_7 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0.a;
+            float _Preview_49bd68e7bd714c78ab709ed19049b7ff_Out_1;
+            Unity_Preview_float(_SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_A_7, _Preview_49bd68e7bd714c78ab709ed19049b7ff_Out_1);
+            float2 _Step_74b80af085fb44dab793b8aebd02e674_Out_2;
+            Unity_Step_float2(float2(0, 0), _TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3, _Step_74b80af085fb44dab793b8aebd02e674_Out_2);
+            float2 _Step_cfc0107733af4fbab0e5b4ffd1a8c95b_Out_2;
+            Unity_Step_float2(_TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3, float2(1, 1), _Step_cfc0107733af4fbab0e5b4ffd1a8c95b_Out_2);
+            float2 _Multiply_daacb5e105374afab1c4f7ac68f4c3ae_Out_2;
+            Unity_Multiply_float(_Step_74b80af085fb44dab793b8aebd02e674_Out_2, _Step_cfc0107733af4fbab0e5b4ffd1a8c95b_Out_2, _Multiply_daacb5e105374afab1c4f7ac68f4c3ae_Out_2);
+            float _Split_41b59f89add144378ab7e9985e715d68_R_1 = _Multiply_daacb5e105374afab1c4f7ac68f4c3ae_Out_2[0];
+            float _Split_41b59f89add144378ab7e9985e715d68_G_2 = _Multiply_daacb5e105374afab1c4f7ac68f4c3ae_Out_2[1];
+            float _Split_41b59f89add144378ab7e9985e715d68_B_3 = 0;
+            float _Split_41b59f89add144378ab7e9985e715d68_A_4 = 0;
+            float _Multiply_4a5f7cee40424bd4968573d70b63d22d_Out_2;
+            Unity_Multiply_float(_Preview_49bd68e7bd714c78ab709ed19049b7ff_Out_1, _Split_41b59f89add144378ab7e9985e715d68_R_1, _Multiply_4a5f7cee40424bd4968573d70b63d22d_Out_2);
+            float _Multiply_9c1d6ef3beeb45f9ae8fc5f2c61ead2a_Out_2;
+            Unity_Multiply_float(_Multiply_4a5f7cee40424bd4968573d70b63d22d_Out_2, _Split_41b59f89add144378ab7e9985e715d68_G_2, _Multiply_9c1d6ef3beeb45f9ae8fc5f2c61ead2a_Out_2);
+            Output_1 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0;
+            R_2 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_R_4;
+            G_3 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_G_5;
+            B_4 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_B_6;
+            A_5 = _Multiply_9c1d6ef3beeb45f9ae8fc5f2c61ead2a_Out_2;
         }
 
         void Unity_Rotate_Radians_float(float2 UV, float2 Center, float Rotation, out float2 Out)
@@ -267,11 +303,6 @@
             UV += Center;
 
             Out = UV;
-        }
-
-        void Unity_Multiply_float(float A, float B, out float Out)
-        {
-            Out = A * B;
         }
 
         void Unity_Sine_float(float In, out float Out)
@@ -636,33 +667,69 @@
             Out = UV * Tiling + Offset;
         }
 
+        void Unity_Preview_float(float In, out float Out)
+        {
+            Out = In;
+        }
+
+        void Unity_Step_float2(float2 Edge, float2 In, out float2 Out)
+        {
+            Out = step(Edge, In);
+        }
+
+        void Unity_Multiply_float(float2 A, float2 B, out float2 Out)
+        {
+            Out = A * B;
+        }
+
+        void Unity_Multiply_float(float A, float B, out float Out)
+        {
+            Out = A * B;
+        }
+
         struct Bindings_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d
         {
         };
 
         void SG_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d(float4 Vector4_19C7703B, UnityTexture2D Texture2D_CA72CD38, float2 Vector2_F19B6F36, Bindings_QTexture2D_76f4b07b850ad0a48ab4b91d1fa4734d IN, out float4 Output_1, out float R_2, out float G_3, out float B_4, out float A_5)
         {
-            UnityTexture2D _Property_c48957278f16b68480a4610fa04852a8_Out_0 = Texture2D_CA72CD38;
-            float2 _Property_26c140d9f83e8385a08b4c849f1db62c_Out_0 = Vector2_F19B6F36;
-            float4 _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0 = Vector4_19C7703B;
-            float _Split_1b16b5375c32e78793936576a4cc5a63_R_1 = _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0[0];
-            float _Split_1b16b5375c32e78793936576a4cc5a63_G_2 = _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0[1];
-            float _Split_1b16b5375c32e78793936576a4cc5a63_B_3 = _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0[2];
-            float _Split_1b16b5375c32e78793936576a4cc5a63_A_4 = _Property_aa91a2672bdb368c8993341b7e08baa3_Out_0[3];
-            float2 _Vector2_3155c819a109bb8b859ad7ae374f8856_Out_0 = float2(_Split_1b16b5375c32e78793936576a4cc5a63_R_1, _Split_1b16b5375c32e78793936576a4cc5a63_G_2);
-            float2 _Vector2_b34ef76f94222681995d96057a1330e3_Out_0 = float2(_Split_1b16b5375c32e78793936576a4cc5a63_B_3, _Split_1b16b5375c32e78793936576a4cc5a63_A_4);
-            float2 _TilingAndOffset_48e1fa86cca7d484a1cd06c8fe10c47d_Out_3;
-            Unity_TilingAndOffset_float(_Property_26c140d9f83e8385a08b4c849f1db62c_Out_0, _Vector2_3155c819a109bb8b859ad7ae374f8856_Out_0, _Vector2_b34ef76f94222681995d96057a1330e3_Out_0, _TilingAndOffset_48e1fa86cca7d484a1cd06c8fe10c47d_Out_3);
-            float4 _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0 = SAMPLE_TEXTURE2D(_Property_c48957278f16b68480a4610fa04852a8_Out_0.tex, _Property_c48957278f16b68480a4610fa04852a8_Out_0.samplerstate, _TilingAndOffset_48e1fa86cca7d484a1cd06c8fe10c47d_Out_3);
-            float _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_R_4 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0.r;
-            float _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_G_5 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0.g;
-            float _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_B_6 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0.b;
-            float _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_A_7 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0.a;
-            Output_1 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_RGBA_0;
-            R_2 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_R_4;
-            G_3 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_G_5;
-            B_4 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_B_6;
-            A_5 = _SampleTexture2D_d748d43eff35f580ad562cc50e1a4b23_A_7;
+            UnityTexture2D _Property_c20210f75e5841c8b4b7250cc2e4321e_Out_0 = Texture2D_CA72CD38;
+            float2 _Property_10f7dba9ddb54aba84adb08a27e022b0_Out_0 = Vector2_F19B6F36;
+            float4 _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0 = Vector4_19C7703B;
+            float _Split_117dfb2a277c4a979671228912a2d2f1_R_1 = _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0[0];
+            float _Split_117dfb2a277c4a979671228912a2d2f1_G_2 = _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0[1];
+            float _Split_117dfb2a277c4a979671228912a2d2f1_B_3 = _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0[2];
+            float _Split_117dfb2a277c4a979671228912a2d2f1_A_4 = _Property_15c92b40551a40d6a2f78b35caabd18e_Out_0[3];
+            float2 _Vector2_9c22647769ea4c96af77199c7f700b00_Out_0 = float2(_Split_117dfb2a277c4a979671228912a2d2f1_R_1, _Split_117dfb2a277c4a979671228912a2d2f1_G_2);
+            float2 _Vector2_729da08c140e4f0db6fd3c2399651a00_Out_0 = float2(_Split_117dfb2a277c4a979671228912a2d2f1_B_3, _Split_117dfb2a277c4a979671228912a2d2f1_A_4);
+            float2 _TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3;
+            Unity_TilingAndOffset_float(_Property_10f7dba9ddb54aba84adb08a27e022b0_Out_0, _Vector2_9c22647769ea4c96af77199c7f700b00_Out_0, _Vector2_729da08c140e4f0db6fd3c2399651a00_Out_0, _TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3);
+            float4 _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0 = SAMPLE_TEXTURE2D(_Property_c20210f75e5841c8b4b7250cc2e4321e_Out_0.tex, _Property_c20210f75e5841c8b4b7250cc2e4321e_Out_0.samplerstate, _TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3);
+            float _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_R_4 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0.r;
+            float _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_G_5 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0.g;
+            float _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_B_6 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0.b;
+            float _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_A_7 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0.a;
+            float _Preview_49bd68e7bd714c78ab709ed19049b7ff_Out_1;
+            Unity_Preview_float(_SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_A_7, _Preview_49bd68e7bd714c78ab709ed19049b7ff_Out_1);
+            float2 _Step_74b80af085fb44dab793b8aebd02e674_Out_2;
+            Unity_Step_float2(float2(0, 0), _TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3, _Step_74b80af085fb44dab793b8aebd02e674_Out_2);
+            float2 _Step_cfc0107733af4fbab0e5b4ffd1a8c95b_Out_2;
+            Unity_Step_float2(_TilingAndOffset_b05b63825f704a14b2b9d1484b21393e_Out_3, float2(1, 1), _Step_cfc0107733af4fbab0e5b4ffd1a8c95b_Out_2);
+            float2 _Multiply_daacb5e105374afab1c4f7ac68f4c3ae_Out_2;
+            Unity_Multiply_float(_Step_74b80af085fb44dab793b8aebd02e674_Out_2, _Step_cfc0107733af4fbab0e5b4ffd1a8c95b_Out_2, _Multiply_daacb5e105374afab1c4f7ac68f4c3ae_Out_2);
+            float _Split_41b59f89add144378ab7e9985e715d68_R_1 = _Multiply_daacb5e105374afab1c4f7ac68f4c3ae_Out_2[0];
+            float _Split_41b59f89add144378ab7e9985e715d68_G_2 = _Multiply_daacb5e105374afab1c4f7ac68f4c3ae_Out_2[1];
+            float _Split_41b59f89add144378ab7e9985e715d68_B_3 = 0;
+            float _Split_41b59f89add144378ab7e9985e715d68_A_4 = 0;
+            float _Multiply_4a5f7cee40424bd4968573d70b63d22d_Out_2;
+            Unity_Multiply_float(_Preview_49bd68e7bd714c78ab709ed19049b7ff_Out_1, _Split_41b59f89add144378ab7e9985e715d68_R_1, _Multiply_4a5f7cee40424bd4968573d70b63d22d_Out_2);
+            float _Multiply_9c1d6ef3beeb45f9ae8fc5f2c61ead2a_Out_2;
+            Unity_Multiply_float(_Multiply_4a5f7cee40424bd4968573d70b63d22d_Out_2, _Split_41b59f89add144378ab7e9985e715d68_G_2, _Multiply_9c1d6ef3beeb45f9ae8fc5f2c61ead2a_Out_2);
+            Output_1 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_RGBA_0;
+            R_2 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_R_4;
+            G_3 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_G_5;
+            B_4 = _SampleTexture2D_0c8b2fbf56fc4753ad68f3c49c1b895d_B_6;
+            A_5 = _Multiply_9c1d6ef3beeb45f9ae8fc5f2c61ead2a_Out_2;
         }
 
         void Unity_Rotate_Radians_float(float2 UV, float2 Center, float Rotation, out float2 Out)
@@ -683,11 +750,6 @@
             UV += Center;
 
             Out = UV;
-        }
-
-        void Unity_Multiply_float(float A, float B, out float Out)
-        {
-            Out = A * B;
         }
 
         void Unity_Sine_float(float In, out float Out)
