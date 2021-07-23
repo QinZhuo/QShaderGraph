@@ -16,7 +16,7 @@ MonoBehaviour:
   Setting:
     material: {fileID: 2100000, guid: 43fb0a04716162c478f424482bd625d9, type: 2}
     RenderPassEvent: 500
-    pixelCount: 125
+    pixelCount: 100
     type: 1
 --- !u!114 &-3595369879159112842
 MonoBehaviour:
