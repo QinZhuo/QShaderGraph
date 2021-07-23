@@ -56,8 +56,8 @@ MonoBehaviour:
   m_Name: QShaderGraphDemo_Renderer
   m_EditorClassIdentifier: 
   m_RendererFeatures:
-  - {fileID: 4321653194396237099}
-  m_RendererFeatureMap: 2b7d6be6ae98f93b
+  - {fileID: 5418434311441971349}
+  m_RendererFeatureMap: 957849544c25324b
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: DepthsNormalFeature
   m_EditorClassIdentifier: 
   m_Active: 1
---- !u!114 &4321653194396237099
+--- !u!114 &5418434311441971349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,11 +110,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b61a7d3bddc6d04696f514b573c2a7b, type: 3}
-  m_Name: Outline
+  m_Name: NewQRendererFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   Setting:
-    material: {fileID: 2100000, guid: 2a953274cd7f7ae4ea1fe153e27d0c6a, type: 2}
+    material: {fileID: 2100000, guid: 43fb0a04716162c478f424482bd625d9, type: 2}
     RenderPassEvent: 500
 --- !u!114 &5728986891528594604
 MonoBehaviour:
