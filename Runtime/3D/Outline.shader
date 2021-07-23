@@ -30,38 +30,38 @@ Shader "Outline"
             float4 _OutlineColor;
             CBUFFER_END
 
-            struct Attributes
+            struct VIn
             {
-                float4 positionOS : POSITION;
+                float4 pos : POSITION;
                 float3 normalOS : NORMAL;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
-            struct Varyings
+            struct Vin
             {
-                float4 positionCS : SV_POSITION;
+                float4 pos : SV_POSITION;
                 half fogCoord : TEXCOORD0;
                 half4 color : COLOR;
                 UNITY_VERTEX_OUTPUT_STEREO
             };
 
-            Varyings vert(Attributes input)
+			Vin vert(VIn i)
             {
-                Varyings output = (Varyings)0;
-                UNITY_SETUP_INSTANCE_ID(input);
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+				Vin o = (Vin)0;
+                UNITY_SETUP_INSTANCE_ID(i);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-                input.positionOS.xyz += input.normalOS.xyz * _Outline;
+                i.pos.xyz +=  i.normalOS.xyz * _Outline;
 
-                VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
-                output.positionCS = vertexInput.positionCS;
+                VertexPositionInputs vertexInput = GetVertexPositionInputs(i.pos.xyz);
+                o.pos = vertexInput.positionCS;
 
-                output.color = _OutlineColor;
-                output.fogCoord = ComputeFogFactor(output.positionCS.z);
-                return output;
+                o.color = _OutlineColor;
+                o.fogCoord = ComputeFogFactor(o.pos.z);
+                return o;
             }
 
-            half4 frag(Varyings i) : SV_Target
+            half4 frag(Vin i) : SV_Target
             {
                 i.color.rgb = MixFog(i.color.rgb, i.fogCoord);
                 return i.color;

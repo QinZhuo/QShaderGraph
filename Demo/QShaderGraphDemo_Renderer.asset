@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: NewPixelFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  Setting:
-    RenderPassEvent: 500
-    pixelCount: 135
-    type: 0
+  Setting: {material: {fileID: 0}, RenderPassEvent: 500, pixelCount: 135}
 --- !u!114 &-6190658676969456716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,10 +27,8 @@ MonoBehaviour:
   m_Name: PixelFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  Setting:
-    RenderPassEvent: 500
-    pixelCount: 128
-    type: 1
+  Setting: {material: {fileID: 2100000, guid: 43fb0a04716162c478f424482bd625d9, type: 2},
+    RenderPassEvent: 500, pixelCount: 125}
 --- !u!114 &-47621584544633643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,10 +42,7 @@ MonoBehaviour:
   m_Name: NewPixelFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  Setting:
-    RenderPassEvent: 500
-    pixelCount: 256
-    type: 0
+  Setting: {material: {fileID: 0}, RenderPassEvent: 500, pixelCount: 256}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,14 +56,15 @@ MonoBehaviour:
   m_Name: QShaderGraphDemo_Renderer
   m_EditorClassIdentifier: 
   m_RendererFeatures:
-  - {fileID: -6190658676969456716}
-  m_RendererFeatureMap: b4bb8b99bb5c16aa
+  - {fileID: 4321653194396237099}
+  m_RendererFeatureMap: 2b7d6be6ae98f93b
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
     copyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
-    screenSpaceShadowPS: {fileID: 4800000, guid: 0f854b35a0cf61a429bd5dcfea30eddd, type: 3}
+    screenSpaceShadowPS: {fileID: 4800000, guid: 0f854b35a0cf61a429bd5dcfea30eddd,
+      type: 3}
     samplingPS: {fileID: 4800000, guid: 04c410c9937594faa893a11dceb85f7e, type: 3}
     tileDepthInfoPS: {fileID: 4800000, guid: f451c6bec16aa51408bdfd37f70aed12, type: 3}
     tileDeferredPS: {fileID: 4800000, guid: 344787727e03649488a1022c09fa74b5, type: 3}
@@ -107,6 +100,22 @@ MonoBehaviour:
   m_Name: DepthsNormalFeature
   m_EditorClassIdentifier: 
   m_Active: 1
+--- !u!114 &4321653194396237099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b61a7d3bddc6d04696f514b573c2a7b, type: 3}
+  m_Name: Outline
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  Setting:
+    material: {fileID: 2100000, guid: 2a953274cd7f7ae4ea1fe153e27d0c6a, type: 2}
+    RenderPassEvent: 500
 --- !u!114 &5728986891528594604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,10 +129,7 @@ MonoBehaviour:
   m_Name: NewPixelFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  Setting:
-    RenderPassEvent: 500
-    pixelCount: 127
-    type: 0
+  Setting: {material: {fileID: 0}, RenderPassEvent: 500, pixelCount: 127}
 --- !u!114 &6640363683803915017
 MonoBehaviour:
   m_ObjectHideFlags: 0
