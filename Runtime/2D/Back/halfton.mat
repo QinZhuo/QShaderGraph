@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: QPixel
-  m_Shader: {fileID: -6465566751694194690, guid: 73818217ab8cc1f4f818253e31b90a03,
+  m_Name: halfton
+  m_Shader: {fileID: -6465566751694194690, guid: 53fe6da6dca8d3448a48ef07668f836a,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 80a503396b40ea34c92647d18c35abf6, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -58,10 +58,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _QTex2dOffset8_86eaeb18e39549af8f476cfd206d0b8b_Texture2D12575de54bba496f8874f55aff87c674_751457210:
-        m_Texture: {fileID: 2800000, guid: 80a503396b40ea34c92647d18c35abf6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -81,6 +77,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_15CFC491: 0.1
+    - Vector1_47F7ACA7: -44.85
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -108,13 +106,14 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Vector2_6A46D00F: {r: 10, g: 10, b: 0, a: 0}
+    - Vector2_80F5EB39: {r: 100, g: 0.5, b: 2.7, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Size: {r: 192, g: 108, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1334674508848983363
+--- !u!114 &2443565715405901408
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
