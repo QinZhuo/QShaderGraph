@@ -1614,6 +1614,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "3d368c73788a4d84a27f211e29c5a8df",
+    "m_Id": 2,
+    "m_DisplayName": "Rectangle",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Rectangle",
+    "m_StageCapability": 2,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "3dd2279064b44e8397acbb8566952085",
     "m_Id": 2,
@@ -2933,10 +2948,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "928346c5ddd24861a356d82e70e2851c",
     "m_Id": 1,
-    "m_DisplayName": "Out_Vector1",
+    "m_DisplayName": "Line",
     "m_SlotType": 1,
     "m_Hidden": false,
-    "m_ShaderOutputName": "OutVector1",
+    "m_ShaderOutputName": "Line",
     "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
@@ -4337,6 +4352,9 @@
         },
         {
             "m_Id": "928346c5ddd24861a356d82e70e2851c"
+        },
+        {
+            "m_Id": "3d368c73788a4d84a27f211e29c5a8df"
         }
     ],
     "synonyms": [],
