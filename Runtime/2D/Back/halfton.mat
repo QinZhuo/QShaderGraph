@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: halfton
-  m_Shader: {fileID: -6465566751694194690, guid: 53fe6da6dca8d3448a48ef07668f836a,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 53fe6da6dca8d3448a48ef07668f836a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -79,11 +78,15 @@ Material:
     m_Floats:
     - Vector1_15CFC491: 0.1
     - Vector1_47F7ACA7: -44.85
+    - Vector1_d4a2b14c61f44492a550f288e33f8a5a: 1
+    - Vector1_f6cf94e9df274e4fa7cc9d16f93e3869: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _ColorMask: 15
+    - _Count: 10
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -93,6 +96,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Interval: 0.5
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -102,13 +106,25 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _Surface: 0
+    - _UIMaskSoftnessX: 0
+    - _UIMaskSoftnessY: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_088ca070316743738fb6e3f6f9db4dbe: {r: 1, g: 0, b: 0, a: 1}
+    - Color_b4a2e7be4f9843dc8e67f85c86107869: {r: 0, g: 0, b: 0, a: 0.5019608}
+    - Vector2_3472e8c0d099492a914d4f245377518f: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_6A46D00F: {r: 10, g: 10, b: 0, a: 0}
     - Vector2_80F5EB39: {r: 100, g: 0.5, b: 2.7, a: 0}
+    - Vector2_d60465f4888c492c8072ddeb7f5f83df: {r: 0.1, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
