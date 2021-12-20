@@ -1,4 +1,4 @@
-﻿Shader "QShaderGraph/MaxWaveUI"
+﻿Shader "QShaderGraph/MinWaveUI"
 {
     Properties
 	{
@@ -9,7 +9,8 @@
         _StencilReadMask("Stencil Read Mask", Float) = 255
         _ColorMask("Color Mask", Float) = 15
         [NoScaleOffset]_MainTex("MainTex", 2D) = "white" {}
-        Vector1_7120850ac08948e0b4aaf4de0cf92ced("Float", Float) = 5
+        Vector1_7120850ac08948e0b4aaf4de0cf92ced("WaveScale", Float) = 5
+        RectInfo("RectInfo", Vector) = (1, 1, 0, 0)
         [HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_ShadowMasks("unity_ShadowMasks", 2DArray) = "" {}
@@ -198,6 +199,7 @@
             CBUFFER_START(UnityPerMaterial)
         float4 _MainTex_TexelSize;
         float Vector1_7120850ac08948e0b4aaf4de0cf92ced;
+        float4 RectInfo;
         CBUFFER_END
 
         // Object and Global properties
@@ -210,6 +212,11 @@
         void Unity_Multiply_float(float A, float B, out float Out)
         {
             Out = A * B;
+        }
+
+        void Unity_Divide_float(float A, float B, out float Out)
+        {
+            Out = A / B;
         }
 
         void Unity_Multiply_float(float2 A, float2 B, out float2 Out)
@@ -350,10 +357,10 @@
             RD_9 = _SampleTexture2D_03b523af033b4a769fa6d128357c1be1_RGBA_0;
         }
 
-        void Unity_Maximum_float4(float4 A, float4 B, out float4 Out)
+        void Unity_Minimum_float4(float4 A, float4 B, out float4 Out)
         {
-            Out = max(A, B);
-        }
+            Out = min(A, B);
+        };
 
             // Graph Vertex
             struct VertexDescription
@@ -389,6 +396,16 @@
             Unity_Multiply_float(_Property_c0011610088c4952997c0fc533364fa4_Out_0, 0.001, _Multiply_5d237cb8f39546fc86e6d97b1f615a5b_Out_2);
             float _Multiply_84246649d30b4138b964c3f018ff9894_Out_2;
             Unity_Multiply_float(IN.TimeParameters.y, _Multiply_5d237cb8f39546fc86e6d97b1f615a5b_Out_2, _Multiply_84246649d30b4138b964c3f018ff9894_Out_2);
+            float4 _Property_105aee841642423daecd6c6270b850c8_Out_0 = RectInfo;
+            float _Split_0d80d27d692446a68b09cde90f7577a3_R_1 = _Property_105aee841642423daecd6c6270b850c8_Out_0[0];
+            float _Split_0d80d27d692446a68b09cde90f7577a3_G_2 = _Property_105aee841642423daecd6c6270b850c8_Out_0[1];
+            float _Split_0d80d27d692446a68b09cde90f7577a3_B_3 = _Property_105aee841642423daecd6c6270b850c8_Out_0[2];
+            float _Split_0d80d27d692446a68b09cde90f7577a3_A_4 = _Property_105aee841642423daecd6c6270b850c8_Out_0[3];
+            float _Divide_abd9f98dd0664a64a2ac26d8904385d1_Out_2;
+            Unity_Divide_float(_Split_0d80d27d692446a68b09cde90f7577a3_R_1, _Split_0d80d27d692446a68b09cde90f7577a3_G_2, _Divide_abd9f98dd0664a64a2ac26d8904385d1_Out_2);
+            float _Multiply_9e0ba1bec55a49dbbca7585df02ddc1a_Out_2;
+            Unity_Multiply_float(_Multiply_84246649d30b4138b964c3f018ff9894_Out_2, _Divide_abd9f98dd0664a64a2ac26d8904385d1_Out_2, _Multiply_9e0ba1bec55a49dbbca7585df02ddc1a_Out_2);
+            float2 _Vector2_e4144baf12724d2bbf6a0b6185439701_Out_0 = float2(_Multiply_84246649d30b4138b964c3f018ff9894_Out_2, _Multiply_9e0ba1bec55a49dbbca7585df02ddc1a_Out_2);
             Bindings_QTex2dOffset8_f9b4f47df8d332140881ba23e1ff05c5 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346;
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5;
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1;
@@ -399,28 +416,28 @@
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7;
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8;
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9;
-            SG_QTex2dOffset8_f9b4f47df8d332140881ba23e1ff05c5(_Property_a1709cb986944697959535b59654db9a_Out_0, (_UV_0b800b5b25a94c96b359223037aca49c_Out_0.xy), (_Multiply_84246649d30b4138b964c3f018ff9894_Out_2.xx), _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Up_2, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Left_3, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Down_4, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RU_6, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9);
-            float4 _Maximum_02adf2bc640f49568c1e8e407b3a1bd9_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Left_3, _Maximum_02adf2bc640f49568c1e8e407b3a1bd9_Out_2);
-            float4 _Maximum_14668dd7194d4e94ba84b2b2baa69925_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Up_2, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Down_4, _Maximum_14668dd7194d4e94ba84b2b2baa69925_Out_2);
-            float4 _Maximum_e14bcb115bf74ca584ae1727917de5e8_Out_2;
-            Unity_Maximum_float4(_Maximum_02adf2bc640f49568c1e8e407b3a1bd9_Out_2, _Maximum_14668dd7194d4e94ba84b2b2baa69925_Out_2, _Maximum_e14bcb115bf74ca584ae1727917de5e8_Out_2);
-            float4 _Maximum_e21d6f403ff247e089e1e72a96bca42a_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RU_6, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7, _Maximum_e21d6f403ff247e089e1e72a96bca42a_Out_2);
-            float4 _Maximum_1fabd7b8c4f34a62a18ca4ec0dae5885_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9, _Maximum_1fabd7b8c4f34a62a18ca4ec0dae5885_Out_2);
-            float4 _Maximum_6de7d09b2ab34ad5a8c5a598f20702da_Out_2;
-            Unity_Maximum_float4(_Maximum_e21d6f403ff247e089e1e72a96bca42a_Out_2, _Maximum_1fabd7b8c4f34a62a18ca4ec0dae5885_Out_2, _Maximum_6de7d09b2ab34ad5a8c5a598f20702da_Out_2);
-            float4 _Maximum_ec416fc0938c45a48c5d8da1c1866133_Out_2;
-            Unity_Maximum_float4(_Maximum_e14bcb115bf74ca584ae1727917de5e8_Out_2, _Maximum_6de7d09b2ab34ad5a8c5a598f20702da_Out_2, _Maximum_ec416fc0938c45a48c5d8da1c1866133_Out_2);
-            float4 _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5, _Maximum_ec416fc0938c45a48c5d8da1c1866133_Out_2, _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2);
-            float _Split_c17bb57a738d41499108659c8c51cdbe_R_1 = _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2[0];
-            float _Split_c17bb57a738d41499108659c8c51cdbe_G_2 = _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2[1];
-            float _Split_c17bb57a738d41499108659c8c51cdbe_B_3 = _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2[2];
-            float _Split_c17bb57a738d41499108659c8c51cdbe_A_4 = _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2[3];
-            surface.BaseColor = (_Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2.xyz);
+            SG_QTex2dOffset8_f9b4f47df8d332140881ba23e1ff05c5(_Property_a1709cb986944697959535b59654db9a_Out_0, (_UV_0b800b5b25a94c96b359223037aca49c_Out_0.xy), _Vector2_e4144baf12724d2bbf6a0b6185439701_Out_0, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Up_2, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Left_3, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Down_4, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RU_6, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9);
+            float4 _Minimum_010fd9056a0a4d17a96cebd9370033a3_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Left_3, _Minimum_010fd9056a0a4d17a96cebd9370033a3_Out_2);
+            float4 _Minimum_9f7f05b707f748788a1b6d2a7bc2d05a_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Up_2, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Down_4, _Minimum_9f7f05b707f748788a1b6d2a7bc2d05a_Out_2);
+            float4 _Minimum_54febc52c3144fd885839ad28e8c433c_Out_2;
+            Unity_Minimum_float4(_Minimum_010fd9056a0a4d17a96cebd9370033a3_Out_2, _Minimum_9f7f05b707f748788a1b6d2a7bc2d05a_Out_2, _Minimum_54febc52c3144fd885839ad28e8c433c_Out_2);
+            float4 _Minimum_036d26bd406a44db96a7d8b198a85948_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RU_6, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7, _Minimum_036d26bd406a44db96a7d8b198a85948_Out_2);
+            float4 _Minimum_76dde666f4564518821be46ba3c5d9b3_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9, _Minimum_76dde666f4564518821be46ba3c5d9b3_Out_2);
+            float4 _Minimum_2a0b06c89cee406abdc3d5ee8712f526_Out_2;
+            Unity_Minimum_float4(_Minimum_036d26bd406a44db96a7d8b198a85948_Out_2, _Minimum_76dde666f4564518821be46ba3c5d9b3_Out_2, _Minimum_2a0b06c89cee406abdc3d5ee8712f526_Out_2);
+            float4 _Minimum_50bb85714ac74b3a9ef3a7de26ba3b8b_Out_2;
+            Unity_Minimum_float4(_Minimum_54febc52c3144fd885839ad28e8c433c_Out_2, _Minimum_2a0b06c89cee406abdc3d5ee8712f526_Out_2, _Minimum_50bb85714ac74b3a9ef3a7de26ba3b8b_Out_2);
+            float4 _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5, _Minimum_50bb85714ac74b3a9ef3a7de26ba3b8b_Out_2, _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2);
+            float _Split_c17bb57a738d41499108659c8c51cdbe_R_1 = _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2[0];
+            float _Split_c17bb57a738d41499108659c8c51cdbe_G_2 = _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2[1];
+            float _Split_c17bb57a738d41499108659c8c51cdbe_B_3 = _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2[2];
+            float _Split_c17bb57a738d41499108659c8c51cdbe_A_4 = _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2[3];
+            surface.BaseColor = (_Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2.xyz);
             surface.Alpha = _Split_c17bb57a738d41499108659c8c51cdbe_A_4;
             return surface;
         }
@@ -635,6 +652,7 @@
             CBUFFER_START(UnityPerMaterial)
         float4 _MainTex_TexelSize;
         float Vector1_7120850ac08948e0b4aaf4de0cf92ced;
+        float4 RectInfo;
         CBUFFER_END
 
         // Object and Global properties
@@ -647,6 +665,11 @@
         void Unity_Multiply_float(float A, float B, out float Out)
         {
             Out = A * B;
+        }
+
+        void Unity_Divide_float(float A, float B, out float Out)
+        {
+            Out = A / B;
         }
 
         void Unity_Multiply_float(float2 A, float2 B, out float2 Out)
@@ -787,10 +810,10 @@
             RD_9 = _SampleTexture2D_03b523af033b4a769fa6d128357c1be1_RGBA_0;
         }
 
-        void Unity_Maximum_float4(float4 A, float4 B, out float4 Out)
+        void Unity_Minimum_float4(float4 A, float4 B, out float4 Out)
         {
-            Out = max(A, B);
-        }
+            Out = min(A, B);
+        };
 
             // Graph Vertex
             struct VertexDescription
@@ -826,6 +849,16 @@
             Unity_Multiply_float(_Property_c0011610088c4952997c0fc533364fa4_Out_0, 0.001, _Multiply_5d237cb8f39546fc86e6d97b1f615a5b_Out_2);
             float _Multiply_84246649d30b4138b964c3f018ff9894_Out_2;
             Unity_Multiply_float(IN.TimeParameters.y, _Multiply_5d237cb8f39546fc86e6d97b1f615a5b_Out_2, _Multiply_84246649d30b4138b964c3f018ff9894_Out_2);
+            float4 _Property_105aee841642423daecd6c6270b850c8_Out_0 = RectInfo;
+            float _Split_0d80d27d692446a68b09cde90f7577a3_R_1 = _Property_105aee841642423daecd6c6270b850c8_Out_0[0];
+            float _Split_0d80d27d692446a68b09cde90f7577a3_G_2 = _Property_105aee841642423daecd6c6270b850c8_Out_0[1];
+            float _Split_0d80d27d692446a68b09cde90f7577a3_B_3 = _Property_105aee841642423daecd6c6270b850c8_Out_0[2];
+            float _Split_0d80d27d692446a68b09cde90f7577a3_A_4 = _Property_105aee841642423daecd6c6270b850c8_Out_0[3];
+            float _Divide_abd9f98dd0664a64a2ac26d8904385d1_Out_2;
+            Unity_Divide_float(_Split_0d80d27d692446a68b09cde90f7577a3_R_1, _Split_0d80d27d692446a68b09cde90f7577a3_G_2, _Divide_abd9f98dd0664a64a2ac26d8904385d1_Out_2);
+            float _Multiply_9e0ba1bec55a49dbbca7585df02ddc1a_Out_2;
+            Unity_Multiply_float(_Multiply_84246649d30b4138b964c3f018ff9894_Out_2, _Divide_abd9f98dd0664a64a2ac26d8904385d1_Out_2, _Multiply_9e0ba1bec55a49dbbca7585df02ddc1a_Out_2);
+            float2 _Vector2_e4144baf12724d2bbf6a0b6185439701_Out_0 = float2(_Multiply_84246649d30b4138b964c3f018ff9894_Out_2, _Multiply_9e0ba1bec55a49dbbca7585df02ddc1a_Out_2);
             Bindings_QTex2dOffset8_f9b4f47df8d332140881ba23e1ff05c5 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346;
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5;
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1;
@@ -836,28 +869,28 @@
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7;
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8;
             float4 _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9;
-            SG_QTex2dOffset8_f9b4f47df8d332140881ba23e1ff05c5(_Property_a1709cb986944697959535b59654db9a_Out_0, (_UV_0b800b5b25a94c96b359223037aca49c_Out_0.xy), (_Multiply_84246649d30b4138b964c3f018ff9894_Out_2.xx), _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Up_2, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Left_3, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Down_4, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RU_6, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9);
-            float4 _Maximum_02adf2bc640f49568c1e8e407b3a1bd9_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Left_3, _Maximum_02adf2bc640f49568c1e8e407b3a1bd9_Out_2);
-            float4 _Maximum_14668dd7194d4e94ba84b2b2baa69925_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Up_2, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Down_4, _Maximum_14668dd7194d4e94ba84b2b2baa69925_Out_2);
-            float4 _Maximum_e14bcb115bf74ca584ae1727917de5e8_Out_2;
-            Unity_Maximum_float4(_Maximum_02adf2bc640f49568c1e8e407b3a1bd9_Out_2, _Maximum_14668dd7194d4e94ba84b2b2baa69925_Out_2, _Maximum_e14bcb115bf74ca584ae1727917de5e8_Out_2);
-            float4 _Maximum_e21d6f403ff247e089e1e72a96bca42a_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RU_6, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7, _Maximum_e21d6f403ff247e089e1e72a96bca42a_Out_2);
-            float4 _Maximum_1fabd7b8c4f34a62a18ca4ec0dae5885_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9, _Maximum_1fabd7b8c4f34a62a18ca4ec0dae5885_Out_2);
-            float4 _Maximum_6de7d09b2ab34ad5a8c5a598f20702da_Out_2;
-            Unity_Maximum_float4(_Maximum_e21d6f403ff247e089e1e72a96bca42a_Out_2, _Maximum_1fabd7b8c4f34a62a18ca4ec0dae5885_Out_2, _Maximum_6de7d09b2ab34ad5a8c5a598f20702da_Out_2);
-            float4 _Maximum_ec416fc0938c45a48c5d8da1c1866133_Out_2;
-            Unity_Maximum_float4(_Maximum_e14bcb115bf74ca584ae1727917de5e8_Out_2, _Maximum_6de7d09b2ab34ad5a8c5a598f20702da_Out_2, _Maximum_ec416fc0938c45a48c5d8da1c1866133_Out_2);
-            float4 _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2;
-            Unity_Maximum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5, _Maximum_ec416fc0938c45a48c5d8da1c1866133_Out_2, _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2);
-            float _Split_c17bb57a738d41499108659c8c51cdbe_R_1 = _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2[0];
-            float _Split_c17bb57a738d41499108659c8c51cdbe_G_2 = _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2[1];
-            float _Split_c17bb57a738d41499108659c8c51cdbe_B_3 = _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2[2];
-            float _Split_c17bb57a738d41499108659c8c51cdbe_A_4 = _Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2[3];
-            surface.BaseColor = (_Maximum_f503e3220acb42fa81473ae6eb10c425_Out_2.xyz);
+            SG_QTex2dOffset8_f9b4f47df8d332140881ba23e1ff05c5(_Property_a1709cb986944697959535b59654db9a_Out_0, (_UV_0b800b5b25a94c96b359223037aca49c_Out_0.xy), _Vector2_e4144baf12724d2bbf6a0b6185439701_Out_0, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Up_2, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Left_3, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Down_4, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RU_6, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9);
+            float4 _Minimum_010fd9056a0a4d17a96cebd9370033a3_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Right_1, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Left_3, _Minimum_010fd9056a0a4d17a96cebd9370033a3_Out_2);
+            float4 _Minimum_9f7f05b707f748788a1b6d2a7bc2d05a_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Up_2, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Down_4, _Minimum_9f7f05b707f748788a1b6d2a7bc2d05a_Out_2);
+            float4 _Minimum_54febc52c3144fd885839ad28e8c433c_Out_2;
+            Unity_Minimum_float4(_Minimum_010fd9056a0a4d17a96cebd9370033a3_Out_2, _Minimum_9f7f05b707f748788a1b6d2a7bc2d05a_Out_2, _Minimum_54febc52c3144fd885839ad28e8c433c_Out_2);
+            float4 _Minimum_036d26bd406a44db96a7d8b198a85948_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RU_6, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LU_7, _Minimum_036d26bd406a44db96a7d8b198a85948_Out_2);
+            float4 _Minimum_76dde666f4564518821be46ba3c5d9b3_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_LD_8, _QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_RD_9, _Minimum_76dde666f4564518821be46ba3c5d9b3_Out_2);
+            float4 _Minimum_2a0b06c89cee406abdc3d5ee8712f526_Out_2;
+            Unity_Minimum_float4(_Minimum_036d26bd406a44db96a7d8b198a85948_Out_2, _Minimum_76dde666f4564518821be46ba3c5d9b3_Out_2, _Minimum_2a0b06c89cee406abdc3d5ee8712f526_Out_2);
+            float4 _Minimum_50bb85714ac74b3a9ef3a7de26ba3b8b_Out_2;
+            Unity_Minimum_float4(_Minimum_54febc52c3144fd885839ad28e8c433c_Out_2, _Minimum_2a0b06c89cee406abdc3d5ee8712f526_Out_2, _Minimum_50bb85714ac74b3a9ef3a7de26ba3b8b_Out_2);
+            float4 _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2;
+            Unity_Minimum_float4(_QTex2dOffset8_da32f279ca654cf0a5c43a033d8ba346_Center_5, _Minimum_50bb85714ac74b3a9ef3a7de26ba3b8b_Out_2, _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2);
+            float _Split_c17bb57a738d41499108659c8c51cdbe_R_1 = _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2[0];
+            float _Split_c17bb57a738d41499108659c8c51cdbe_G_2 = _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2[1];
+            float _Split_c17bb57a738d41499108659c8c51cdbe_B_3 = _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2[2];
+            float _Split_c17bb57a738d41499108659c8c51cdbe_A_4 = _Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2[3];
+            surface.BaseColor = (_Minimum_447e9bf391fa40b7ab3e037305066f1c_Out_2.xyz);
             surface.Alpha = _Split_c17bb57a738d41499108659c8c51cdbe_A_4;
             return surface;
         }
