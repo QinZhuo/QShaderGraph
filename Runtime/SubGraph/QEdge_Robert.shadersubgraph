@@ -289,7 +289,7 @@
             "m_Guid": ""
         }
     },
-    "m_Path": "Sub Graphs",
+    "m_Path": "QShaderGraph",
     "m_ConcretePrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {
