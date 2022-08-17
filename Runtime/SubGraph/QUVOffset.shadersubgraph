@@ -90,7 +90,7 @@
     },
     "m_Path": "Sub Graphs",
     "m_ConcretePrecision": 0,
-    "m_PreviewMode": 2,
+    "m_PreviewMode": 1,
     "m_OutputNode": {
         "m_Id": "87e92fe1f3cc4a95b3a228109db194c7"
     },
@@ -226,10 +226,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 381.9999694824219,
+            "x": 382.4000244140625,
             "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
+            "width": 130.39999389648438,
+            "height": 77.5999984741211
         }
     },
     "m_Slots": [

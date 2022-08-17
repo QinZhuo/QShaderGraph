@@ -73,7 +73,7 @@
     },
     "m_Path": "QShaderGraph",
     "m_ConcretePrecision": 0,
-    "m_PreviewMode": 2,
+    "m_PreviewMode": 1,
     "m_OutputNode": {
         "m_Id": "e2f9b57967234876bb15e2c39ff521ed"
     },
