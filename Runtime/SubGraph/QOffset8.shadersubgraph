@@ -900,9 +900,6 @@
             "m_Id": "3cd945da3d554777939886c067ed52f9"
         },
         {
-            "m_Id": "ec97553953b847cebb810ce628cd4ef9"
-        },
-        {
             "m_Id": "04fd1e70796d46319133ad15ea52fedc"
         }
     ],
@@ -971,9 +968,6 @@
         },
         {
             "m_Id": "abb6b7e0522c474590d9a4f7452fcd84"
-        },
-        {
-            "m_Id": "486a1156668f4259bdc2a3fd22b2bd0e"
         },
         {
             "m_Id": "0020e158a72548e493824296e334913f"
@@ -1045,20 +1039,6 @@
         "e32": 0.0,
         "e33": 1.0
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "34487457eb1744d4bfe84245a827efa3",
-    "m_Id": 475885811,
-    "m_DisplayName": "Clamp",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Boolean_857fe6e5be94414ca3b30f86277797f5",
-    "m_StageCapability": 3,
-    "m_Value": true,
-    "m_DefaultValue": false
 }
 
 {
@@ -1414,20 +1394,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "486a1156668f4259bdc2a3fd22b2bd0e",
-    "m_Id": 475885811,
-    "m_DisplayName": "Clamp",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Boolean_857fe6e5be94414ca3b30f86277797f5",
-    "m_StageCapability": 3,
-    "m_Value": true,
-    "m_DefaultValue": false
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SubGraphNode",
     "m_ObjectId": "490ffc87693845369b9e5ebf51657ba8",
     "m_Group": {
@@ -1450,9 +1416,6 @@
         },
         {
             "m_Id": "a99da2a7669f46fa9cc5ede7f28dc4c8"
-        },
-        {
-            "m_Id": "7ce17f9a36414d9c93b9388ed0505e3f"
         },
         {
             "m_Id": "664e30ccb7c343838bce719ab58cfa95"
@@ -1704,34 +1667,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "5d6ade918259474b804ab7df9e479caf",
-    "m_Id": 475885811,
-    "m_DisplayName": "Clamp",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Boolean_857fe6e5be94414ca3b30f86277797f5",
-    "m_StageCapability": 3,
-    "m_Value": true,
-    "m_DefaultValue": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "5d83d87204d04721b0a6a69f4e7f8cc8",
-    "m_Id": 475885811,
-    "m_DisplayName": "Clamp",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Boolean_857fe6e5be94414ca3b30f86277797f5",
-    "m_StageCapability": 3,
-    "m_Value": true,
-    "m_DefaultValue": false
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SubGraphNode",
     "m_ObjectId": "60ed6df2fc4546bbbac3278d84fe911e",
     "m_Group": {
@@ -1754,9 +1689,6 @@
         },
         {
             "m_Id": "56118a43ad5540f7b64164628220749c"
-        },
-        {
-            "m_Id": "5d83d87204d04721b0a6a69f4e7f8cc8"
         },
         {
             "m_Id": "7aaedcfee8e0425eb6f6011513f8f66e"
@@ -2086,7 +2018,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "76af7de9e02341508109029ea1f0f8c5",
     "m_Id": 0,
-    "m_DisplayName": "Base",
+    "m_DisplayName": "In",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2126,9 +2058,6 @@
         },
         {
             "m_Id": "ed2138e8cbf6466d930b9f5ebc68103c"
-        },
-        {
-            "m_Id": "5d6ade918259474b804ab7df9e479caf"
         },
         {
             "m_Id": "62ff5cfea51e4d2a88c46562c104170f"
@@ -2173,20 +2102,6 @@
         "y": 0.0
     },
     "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "7ce17f9a36414d9c93b9388ed0505e3f",
-    "m_Id": 475885811,
-    "m_DisplayName": "Clamp",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Boolean_857fe6e5be94414ca3b30f86277797f5",
-    "m_StageCapability": 3,
-    "m_Value": true,
-    "m_DefaultValue": false
 }
 
 {
@@ -2490,9 +2405,6 @@
             "m_Id": "a6907bd8a06248938aa2bf106e505a1c"
         },
         {
-            "m_Id": "c6e36a3aadee4d7bba58380fb8ad44f4"
-        },
-        {
             "m_Id": "b95eba455b48455bb44af99037d3efab"
         }
     ],
@@ -2575,9 +2487,6 @@
         },
         {
             "m_Id": "c0b33342c09e46f2875d23f648031bfa"
-        },
-        {
-            "m_Id": "ec2d2893961242639c1554e633cd1c32"
         },
         {
             "m_Id": "4aaa67d1b9f54f4283618f139181e065"
@@ -3085,20 +2994,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "c6e36a3aadee4d7bba58380fb8ad44f4",
-    "m_Id": 475885811,
-    "m_DisplayName": "Clamp",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Boolean_857fe6e5be94414ca3b30f86277797f5",
-    "m_StageCapability": 3,
-    "m_Value": true,
-    "m_DefaultValue": false
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "cae2c7a072734db881bcbaea766c4309",
     "m_Group": {
@@ -3137,7 +3032,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "cb851311d58d4163872785363f06269a",
     "m_Id": 0,
-    "m_DisplayName": "Base",
+    "m_DisplayName": "In",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -3279,34 +3174,6 @@
         "y": 0.0
     },
     "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "ec2d2893961242639c1554e633cd1c32",
-    "m_Id": 475885811,
-    "m_DisplayName": "Clamp",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Boolean_857fe6e5be94414ca3b30f86277797f5",
-    "m_StageCapability": 3,
-    "m_Value": true,
-    "m_DefaultValue": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "ec97553953b847cebb810ce628cd4ef9",
-    "m_Id": 475885811,
-    "m_DisplayName": "Clamp",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Boolean_857fe6e5be94414ca3b30f86277797f5",
-    "m_StageCapability": 3,
-    "m_Value": true,
-    "m_DefaultValue": false
 }
 
 {
@@ -3488,9 +3355,6 @@
         },
         {
             "m_Id": "eafa1e533779400396d2776f93d7121e"
-        },
-        {
-            "m_Id": "34487457eb1744d4bfe84245a827efa3"
         },
         {
             "m_Id": "bf1f652e926b44ab86294f39ca990d67"
