@@ -1840,7 +1840,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "8a3eb96dc4924c7195974df1b2b1aa05",
     "m_Id": -1356068315,
-    "m_DisplayName": "Base",
+    "m_DisplayName": "In",
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "Vector2_72a2395e9c314f42b17fe8dddb805b21",

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+using QTool;
 public class CreateShaderWindow : EditorWindow
 {
     public string shaderName="";
@@ -16,10 +16,7 @@ public class CreateShaderWindow : EditorWindow
     System.Action OnCancel;
     public void Init(string name,System.Action<string> OnOk, System.Action OnCancel=null)
     {
-        if (name!=null&&name.StartsWith("QShaderGraph/"))
-        {
-            name = name.Remove(0, "QShaderGraph/".Length);
-        }
+        name = name.SplitEndString("/");
         shaderName =string.IsNullOrEmpty(name)? "UIShader":name+"UI";
         this.OnOk = OnOk;
         this.OnCancel = OnCancel;
