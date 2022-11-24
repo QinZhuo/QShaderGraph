@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: QRectangle
-  m_Shader: {fileID: -6465566751694194690, guid: fe383b02921d4cb4ca8539fd90851a9c,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: fe383b02921d4cb4ca8539fd90851a9c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -89,6 +88,7 @@ Material:
     - Radius: 0.1
     - Vector1_62BA2F96: 1
     - Vector1_EE07CD04: 0.1
+    - Vector1_a56d6609adbd4893b4195955441c0611: 46.64
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -114,10 +114,10 @@ Material:
     - Color1: {r: 0.6117647, g: 0.054901943, b: 1, a: 1}
     - Color_413DF4D: {r: 0.28235298, g: 0.07058821, b: 0.99607843, a: 1}
     - TillingOffset: {r: 1, g: 1, b: 0, a: 0}
-    - UISize: {r: 100, g: 500, b: 0, a: 0}
+    - UISize: {r: 1007.2526, g: 204.346, b: 74.258514, a: -274.938}
     - Vector4_2008F7FD: {r: 0.79, g: 1, b: 0, a: 0}
     - Vector4_6162E5F0: {r: 1, g: 0, b: 1, a: 1}
-    - Vector4_7E1BB41B: {r: 10, g: 20, b: 0, a: 1}
+    - Vector4_7E1BB41B: {r: 80.78, g: 226.61, b: 0, a: 1}
     - Vector4_CAD3B940: {r: 10, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

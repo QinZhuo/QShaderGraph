@@ -67,7 +67,7 @@
     },
     "m_PreviewData": {
         "serializedMesh": {
-            "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
+            "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
         }
     },
@@ -143,12 +143,12 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "6f117844f886406a9380bcd5a6194c0c",
+    "m_ObjectId": "60feda85043146a28a75f69ab4a75996",
     "m_Id": 1,
-    "m_DisplayName": "Out_Vector1",
+    "m_DisplayName": "Out",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "OutVector1",
+    "m_ShaderOutputName": "Out",
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
@@ -299,7 +299,7 @@
     },
     "m_Slots": [
         {
-            "m_Id": "6f117844f886406a9380bcd5a6194c0c"
+            "m_Id": "60feda85043146a28a75f69ab4a75996"
         }
     ],
     "synonyms": [],
