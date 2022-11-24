@@ -4,13 +4,13 @@
     "m_ObjectId": "87e056766a4c493db2b7598a18ec1965",
     "m_Properties": [
         {
-            "m_Id": "f4f81b69e9e24900b2a35165159c5c07"
-        },
-        {
             "m_Id": "6d6a641f29f66b8abad6ed5615675e51"
         },
         {
             "m_Id": "103a21721560482aa6c7bc3c67ee7f37"
+        },
+        {
+            "m_Id": "f4f81b69e9e24900b2a35165159c5c07"
         }
     ],
     "m_Keywords": [],
@@ -378,7 +378,7 @@
     },
     "m_Path": "QShaderGraph",
     "m_ConcretePrecision": 0,
-    "m_PreviewMode": 2,
+    "m_PreviewMode": 1,
     "m_OutputNode": {
         "m_Id": "9d32b67a986f0881a7f450275c9d24ac"
     },
@@ -509,7 +509,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DInputMaterialSlot",
     "m_ObjectId": "10bd9ee6a77141d9827de9e89cd59988",
     "m_Id": 751457210,
-    "m_DisplayName": "MainTex",
+    "m_DisplayName": "Texture",
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "Texture2D_12575de54bba496f8874f55aff87c674",
@@ -676,10 +676,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 814.3413696289063,
-            "y": 100.61358642578125,
-            "width": 0.0,
-            "height": 0.0
+            "x": 860.0,
+            "y": -72.80001068115235,
+            "width": 208.0,
+            "height": 302.3999938964844
         }
     },
     "m_Slots": [
@@ -1137,7 +1137,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":10309,\"guid\":\"0000000000000000f000000000000000\",\"type\":0}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"0667744b7a3817042a5553c91f8f390e\",\"type\":3}}",
         "m_Guid": ""
     },
     "m_Modifiable": true,
@@ -1772,7 +1772,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "QTex2dOffset8",
+    "m_Name": "QTexture8",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
