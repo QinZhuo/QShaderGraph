@@ -67,12 +67,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b61a7d3bddc6d04696f514b573c2a7b, type: 3}
-  m_Name: QPixel
+  m_Name: QRayMarching
   m_EditorClassIdentifier: 
   m_Active: 1
   Setting:
-    material: {fileID: 2100000, guid: 43fb0a04716162c478f424482bd625d9, type: 2}
-    RenderPassEvent: 500
+    material: {fileID: 2100000, guid: 96118e94c9d60934a97a481296bb6b21, type: 2}
+    renderPassEvent: 500
     downSample: 0
 --- !u!114 &-3595369879159112842
 MonoBehaviour:
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Active: 1
   Setting:
     material: {fileID: 2100000, guid: 43fb0a04716162c478f424482bd625d9, type: 2}
-    RenderPassEvent: 500
+    renderPassEvent: 500
     downSample: 1
 --- !u!114 &11400000
 MonoBehaviour:
