@@ -69,11 +69,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b61a7d3bddc6d04696f514b573c2a7b, type: 3}
   m_Name: QPixel
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   Setting:
     material: {fileID: 2100000, guid: 43fb0a04716162c478f424482bd625d9, type: 2}
     RenderPassEvent: 500
-    downSample: 1
+    downSample: 0
 --- !u!114 &-3595369879159112842
 MonoBehaviour:
   m_ObjectHideFlags: 0

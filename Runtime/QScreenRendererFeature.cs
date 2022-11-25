@@ -28,7 +28,7 @@ namespace QTool
             {
                 Setting = new QScreenPassSetting();
             }
-            Pass.renderPassEvent = Setting.RenderPassEvent;
+            Pass.renderPassEvent = Setting.renderPassEvent;
         }
         protected override void Dispose(bool disposing)
         {
@@ -109,7 +109,7 @@ namespace QTool
     public class QScreenPassSetting
     {
         public Material material;
-        public RenderPassEvent RenderPassEvent = RenderPassEvent.AfterRenderingTransparents;
-        public int downSample = 1;
+        public RenderPassEvent renderPassEvent = RenderPassEvent.AfterRenderingTransparents;
+        public int downSample = 0;
     }
 }

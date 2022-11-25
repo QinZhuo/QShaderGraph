@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Triplanar
-  m_Shader: {fileID: -6465566751694194690, guid: ecde6a06a5c6b614e965756a474605c2, type: 3}
+  m_Name: Glass
+  m_Shader: {fileID: -6465566751694194690, guid: 5050068f65edd2347b904571f9af7577, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: aeaa482ec0c4426439d108b4f1515d16, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -76,8 +76,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_108dc2e875cc491ba1136fe513d15058: 0.098
-    - Vector1_2cf499379acf4eb3be40a301ad17173c: 10
+    - Vector1_3a5887a5c36549d49e0c250790a1224a: 0.2
+    - Vector1_9fa9c55e64d24f3d9a82df20ac536ec2: 3.82
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -105,12 +105,15 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_7cdae27d16b141f79168caa8def7d4e9: {r: 0, g: 0, b: 0, a: 0}
+    - Color_c8a30a7f75914fc9968cd803d25de1de: {r: 0, g: 0, b: 0, a: 1}
+    - Color_ef5b95c2433d4954adb05ec0eeb15090: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1431457621683111703
+--- !u!114 &1235793100727961964
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
