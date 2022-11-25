@@ -15,7 +15,7 @@ namespace QTool
                 name = Material.name;
             }
         }
-        public QScreenRenderPass Pass;
+        private QScreenRenderPass Pass = null;
         [SerializeField]
         public QScreenPassSetting Setting;
         public override void Create()
@@ -38,23 +38,20 @@ namespace QTool
         {
             get
             {
-                return Pass.Material;
+                return Pass?.Material;
             }
         }
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
-            if (!Pass.Setup(Setting))
-            {
-                return;
-            }
+            Pass.Setting = Setting;
             renderer.EnqueuePass(Pass);
         }
 
     }
     public class QScreenRenderPass : ScriptableRenderPass
     {
-        protected int TempTextureId = Shader.PropertyToID(nameof(QScreenRenderPass));
-        protected RenderTargetIdentifier RenderResult = new RenderTargetIdentifier(nameof(QScreenRenderPass));
+        private static int TempTexture = Shader.PropertyToID(nameof(QScreenRenderPass)+"_Temp"+nameof(Texture));
+        private static RenderTargetIdentifier CameraColorTexture = new RenderTargetIdentifier("_CameraColorTexture");
         public Material Material
         {
             get
@@ -79,7 +76,7 @@ namespace QTool
                 renderingData.cameraData.cameraTargetDescriptor.width /= Setting.downSample;
                 renderingData.cameraData.cameraTargetDescriptor.height /= Setting.downSample;
             }
-            cmd.GetTemporaryRT(TempTextureId, renderingData.cameraData.cameraTargetDescriptor, FilterMode.Point);
+            cmd.GetTemporaryRT(TempTexture, renderingData.cameraData.cameraTargetDescriptor, FilterMode.Point);
         }
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
@@ -89,26 +86,22 @@ namespace QTool
             {
                 if (Material == null)
                 {
-                    cmd.Blit(RenderResult, TempTextureId);
-                    cmd.Blit(TempTextureId, RenderResult);
+                    cmd.Blit(CameraColorTexture, TempTexture);
+                    cmd.Blit(TempTexture, CameraColorTexture);
                 }
                 else
                 {
-                    cmd.Blit(RenderResult, TempTextureId);
-                    cmd.Blit(TempTextureId, RenderResult, Material, 0);
+                    cmd.Blit(CameraColorTexture, TempTexture);
+                    cmd.Blit(TempTexture, CameraColorTexture, Material, 0);
                 }
             }
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);
         }
-        public virtual bool Setup(QScreenPassSetting setting)
-        {
-            this.Setting = setting;
-            return true;
-        }
+      
         public override void OnCameraCleanup(CommandBuffer cmd)
         {
-            cmd.ReleaseTemporaryRT(TempTextureId);
+            cmd.ReleaseTemporaryRT(TempTexture);
         }
     }
   
