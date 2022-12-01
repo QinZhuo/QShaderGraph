@@ -1,4 +1,4 @@
-﻿Shader "QShaderGraph/QinearImageUI"
+﻿Shader "QShaderGraph/QLinearImageUI"
 {
     Properties
 	{
