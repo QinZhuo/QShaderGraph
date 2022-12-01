@@ -8,6 +8,7 @@
         _StencilWriteMask("Stencil Write Mask", Float) = 255
         _StencilReadMask("Stencil Read Mask", Float) = 255
         _ColorMask("Color Mask", Float) = 15
+        [NoScaleOffset]_MainTex("MainTex", 2D) = "white" {}
         [HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_ShadowMasks("unity_ShadowMasks", 2DArray) = "" {}
@@ -200,13 +201,13 @@
 
             // Graph Properties
             CBUFFER_START(UnityPerMaterial)
+        float4 _MainTex_TexelSize;
         CBUFFER_END
 
         // Object and Global properties
         SAMPLER(SamplerState_Linear_Repeat);
         TEXTURE2D(_MainTex);
         SAMPLER(sampler_MainTex);
-        float4 _MainTex_TexelSize;
         float4 _ClipRect;
         float _UIMaskSoftnessX;
         float _UIMaskSoftnessY;
@@ -595,13 +596,13 @@
 
             // Graph Properties
             CBUFFER_START(UnityPerMaterial)
+        float4 _MainTex_TexelSize;
         CBUFFER_END
 
         // Object and Global properties
         SAMPLER(SamplerState_Linear_Repeat);
         TEXTURE2D(_MainTex);
         SAMPLER(sampler_MainTex);
-        float4 _MainTex_TexelSize;
         float4 _ClipRect;
         float _UIMaskSoftnessX;
         float _UIMaskSoftnessY;
