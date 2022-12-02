@@ -35,10 +35,6 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 2a953274cd7f7ae4ea1fe153e27d0c6a, type: 2}
     renderPassEvent: 500
     downSample: 0
-    OverrideObjects: 1
-    layer:
-      serializedVersion: 2
-      m_Bits: 4294967295
 --- !u!114 &-6395144352328206304
 MonoBehaviour:
   m_ObjectHideFlags: 0
