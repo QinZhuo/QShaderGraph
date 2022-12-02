@@ -18,23 +18,6 @@ MonoBehaviour:
     RenderPassEvent: 500
     pixelCount: 100
     type: 1
---- !u!114 &-7598747081796971218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8edc35c5e1a46546923dbd8147bf54c, type: 3}
-  m_Name: QOutline
-  m_EditorClassIdentifier: 
-  m_Active: 1
-  Setting:
-    material: {fileID: 2100000, guid: 2a953274cd7f7ae4ea1fe153e27d0c6a, type: 2}
-    renderPassEvent: 500
-    downSample: 0
 --- !u!114 &-6395144352328206304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +52,44 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 43fb0a04716162c478f424482bd625d9, type: 2}
     renderPassEvent: 500
     downSample: 1
+--- !u!114 &-3054453753452303549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8edc35c5e1a46546923dbd8147bf54c, type: 3}
+  m_Name: QViewNormal
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  setting:
+    material: {fileID: 2100000, guid: 9cc0cbc01b5aeae4699c50421e8f633b, type: 2}
+    renderPassEvent: 500
+    OverrideLayer:
+      serializedVersion: 2
+      m_Bits: 4294967295
+--- !u!114 &-1496909156232460477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8edc35c5e1a46546923dbd8147bf54c, type: 3}
+  m_Name: QOutline
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  setting:
+    material: {fileID: 2100000, guid: 2a953274cd7f7ae4ea1fe153e27d0c6a, type: 2}
+    renderPassEvent: 500
+    OverrideLayer:
+      serializedVersion: 2
+      m_Bits: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,8 +103,9 @@ MonoBehaviour:
   m_Name: QShaderGraph_Renderer
   m_EditorClassIdentifier: 
   m_RendererFeatures:
-  - {fileID: -7598747081796971218}
-  m_RendererFeatureMap: 2e9574fbc9d38b96
+  - {fileID: -3054453753452303549}
+  - {fileID: -1496909156232460477}
+  m_RendererFeatureMap: 43eb9d927e669cd54307bca90de939eb
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
