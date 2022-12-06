@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: QVoxelColor
-  m_Shader: {fileID: -6465566751694194690, guid: 76d1523569f6483439e12e911dbe8ed6, type: 3}
+  m_Name: QVertexColor
+  m_Shader: {fileID: 4800000, guid: 3c67d97b5fb332f47973cdbc73a62ef3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
